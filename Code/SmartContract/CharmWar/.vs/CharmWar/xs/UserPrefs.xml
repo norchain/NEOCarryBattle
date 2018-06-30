@@ -1,7 +1,7 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workbench ActiveDocument="CharmWar/Class1.cs">
     <Files>
-      <File FileName="CharmWar/Class1.cs" Line="1" Column="1" />
+      <File FileName="CharmWar/Class1.cs" Line="15" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -9,6 +9,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.CharmWar FirstBuild="True" />
   <MultiItemStartupConfigurations />
 </Properties>
