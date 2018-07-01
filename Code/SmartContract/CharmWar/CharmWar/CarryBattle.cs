@@ -28,9 +28,11 @@ namespace CarryBattle
             public const string NumWarLive = "nW";
             public const string NumWarDead = "nw";
 
-            public const string PxCardLive = "pC";
-            public const string PxCardDead = "pc";
-            public const string PxWarLive = "pW";
+            public const string PxCard = "C";
+            public const string PxCardAct = "CA";
+            public const string PxWar = "W";
+			public const string PxUser = "U";
+
             public const string PxWarDead = "pw";
             public const string PxOwner = "po";
         }
@@ -322,7 +324,7 @@ namespace CarryBattle
 
         private static byte SetUser(BigInteger id, User user)
         {
-            return Utils.SetStorageWithKey("U" + id.ToString(), UserToBytes(user));
+			return Utils.SetStorageWithKey(Const.PxUser + id.ToString(), UserToBytes(user));
         }
 
 		public static bool UserRegister(params object[] args){
@@ -349,7 +351,7 @@ namespace CarryBattle
 				User user = new User();
 				user.address = from;
 				user.name = (byte[])args[1];
-				Utils.SetStorageWithKey("U" + newUserId.ToString(), UserToBytes(user));
+				Utils.SetStorageWithKey(Const.PxUser + newUserId.ToString(), UserToBytes(user));
 
                 //Generate new user some basic cards
 				int seed = Blockchain.GetHeader(Blockchain.GetHeight()).GetHashCode();
@@ -409,7 +411,7 @@ namespace CarryBattle
 
 		public static byte[] GetUserRawById(BigInteger uid)
         {
-            return Utils.GetStorageWithKey("U" + uid.ToString());
+			return Utils.GetStorageWithKey(Const.PxUser + uid.ToString());
         }
 
 		public static User GetUserById(BigInteger uid){
@@ -446,7 +448,7 @@ namespace CarryBattle
         }
 
 		private static byte SetCard(BigInteger cid, Card card){
-			return Utils.SetStorageWithKey("C" + cid.ToString(), CardToBytes(card));
+			return Utils.SetStorageWithKey(Const.PxCard + cid.ToString(), CardToBytes(card));
 		}
 
 		private static Card GenCard(BigInteger owner, int seed)
@@ -524,7 +526,7 @@ namespace CarryBattle
 			CardAct cardAct = new CardAct();
 			cardAct.cID = cID;
 
-			Utils.SetStorageWithKey("CA" + insertAId.ToString(), CardActToBytes(cardAct));
+			Utils.SetStorageWithKey(Const.PxCardAct + insertAId.ToString(), CardActToBytes(cardAct));
 
 			if(insertAId == global.highestLiveCardId ){
 				global.highestLiveCardId = BigInteger.Add(global.highestLiveCardId , 1);
@@ -536,17 +538,29 @@ namespace CarryBattle
 			}
 		}
         
-		private static DiscardCard(BigInteger cardID){
-			
+		private static byte DiscardCard(BigInteger cardID){
+			Global global = GetGlobal();
+			for (BigInteger i = 1; i < global.highestLiveCardId; i++)
+            {
+                CardAct ca = GetCardActById(i);
+                if (ca != null)
+                {
+					if (ca.cID == cardID){
+						return SetCardAct(i, null);
+					}
+                }
+                
+            }
+			return State.Abort;
 		}
 
-		private byte SetCardAct(BigInteger caId, CardAct cardAct){
-			return Utils.SetStorageWithKey("CA" + caId.ToString(), CardActToBytes(cardAct));
+		private static byte SetCardAct(BigInteger caId, CardAct cardAct){
+			return Utils.SetStorageWithKey(Const.PxCardAct + caId.ToString(), CardActToBytes(cardAct));
 		}
 
 		public static byte[] GetCardRawById(BigInteger cId)
         {
-			return Utils.GetStorageWithKey("C" + cId.ToString());
+			return Utils.GetStorageWithKey(Const.PxCard + cId.ToString());
         }
 
     
@@ -558,7 +572,7 @@ namespace CarryBattle
 
 
 		public static byte[] GetCardActRawById(BigInteger caId){
-			return Utils.GetStorageWithKey("CA" + caId.ToString());
+			return Utils.GetStorageWithKey(Const.PxCardAct + caId.ToString());
 		}
 
 		public static CardAct GetCardActById(BigInteger caId)
@@ -591,6 +605,7 @@ namespace CarryBattle
                     byte[] cardRaw = Utils.GetStorageWithKeyPath("pC", i.ToString(), "c");
 
                 }
+				return false;
             }
 
         }
