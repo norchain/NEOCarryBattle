@@ -4,33 +4,121 @@ using System.Numerics;
 
 namespace Neo.SmartContract
 {
-    public class MapExample : Framework.SmartContract
-    {
-        public static byte[] Main(string op)
+	public class State{
+		public const byte Create = 0;
+		public const byte Update = 1;
+		public const byte Delete = 2;
+		public const byte Unchanged = 3;
+		public const byte Invalid = 4;
+	}
+
+	public class Utils{
+		public const string splitter = "";
+        
+
+		public static string KeyPath(params string[] elements)
         {
-            // Simple Map
-            Map<string, int> m = new Map<string, int>();
-            m["hello"] = 10;
-            m["world"] = 15;
-            Runtime.Notify(m["hello"]); // will print '10'
-            Runtime.Notify(m["world"]); // will print '15'
+			return string.Join(splitter, elements);
+        }
+		public static byte[] GetStorageWithKeyPath(params string[] elements){
+			return GetStorageWithKey(KeyPath(elements));
+		}
+		public static byte[] GetStorageWithKey(byte[] key){
+			return Storage.Get(Storage.CurrentContext, key);
+		}
+		public static byte[] GetStorageWithKey(string key)
+        {
+            return Storage.Get(Storage.CurrentContext, key);
+        }
 
-            // StorageMap (create prefix for Storage)
-            StorageMap user_sm = Storage.CurrentContext.CreateMap("user"); // 'user' prefix
-            user_sm.Put("xyz", 20);
-            user_sm.Put("wrd", 30);
-            StorageMap tx_sm = Storage.CurrentContext.CreateMap("tx"); // 'tx' prefix
-            tx_sm.Put("xyz", 40);
-            tx_sm.Put("wrd", 50);
+		public static byte SetStorageWithKeyPath(byte[] value, params string[] elements)
+        {
+			return SetStorageWithKey(KeyPath(elements), value);
+        }
 
-            Runtime.Notify(user_sm.Get("xyz").AsBigInteger()); // will print '20'
-            Runtime.Notify(user_sm.Get("wrd").AsBigInteger()); // will print '30'
-            Runtime.Notify(tx_sm.Get("xyz").AsBigInteger()); // will print '40'
-            Runtime.Notify(tx_sm.Get("wrd").AsBigInteger()); // will print '50'
-            Runtime.Notify(Storage.Get(Storage.CurrentContext, "user\x00xyz").AsBigInteger()); // will print '20'
-			BigInteger r = Storage.Get(Storage.CurrentContext, "tx\u0000xyz").AsBigInteger();
-            Runtime.Notify(r); // will print '40'
-			return r.ToByteArray();
+		public static byte SetStorageWithKey(string key,byte[] value)
+        {
+			byte[] orig = GetStorageWithKey(key);
+			if (orig == value) { return State.Unchanged; }
+
+            if (value.Length == 0)
+            {
+				Storage.Delete(Storage.CurrentContext, key);
+                return State.Delete;
+
+            }
+			else{
+				Storage.Put(Storage.CurrentContext, key, value);
+				return (orig.Length == 0)? State.Create: State.Update;
+			} 
+        }
+	}
+
+
+	public class Const {
+		public const string numItems = "cNumItems";
+		public const string prixItem = "i";
+	}
+
+
+    public class MapExample : Framework.SmartContract
+    {      
+		public static bool Main(string op,params object[] args)
+        {
+			if(op == "writeItem"){
+				BigInteger currentNum = Utils.GetStorageWithKey(Const.numItems).AsBigInteger();
+
+				byte[] key = (byte[])args[0];
+				if (key[0]!='i'){
+					return false;
+				}
+				else{
+					byte[] val = (byte[])args[1];
+					byte result = Utils.SetStorageWithKeyPath(val,Const.prixItem, key.ToString());
+					switch (result) {
+						case State.Create:
+							{
+								
+								Utils.SetStorageWithKey(Const.numItems, BigInteger.Add(currentNum, 1).AsByteArray());
+								break;
+							}
+						case State.Delete:{
+								BigInteger currentNum = Utils.GetStorageWithKey(Const.numItems).AsBigInteger();
+                                Utils.SetStorageWithKey(Const.numItems, BigInteger.Subtract(currentNum, 1).AsByteArray());
+								break;
+							}
+
+							break;
+						default:
+							break;
+					}
+                 
+
+
+					byte[] ex = Storage.Get(Storage.CurrentContext, key);
+					if(ex.Length == 0){ //Not exist yet
+						BigInteger currentNum = Storage.Get(Storage.CurrentContext, "cNumItems").AsBigInteger();
+						Storage.Put(Storage.CurrentContext, "cNumItems", BigInteger.Add(currentNum, 1));
+                        
+					}
+					Storage.Put(Storage.CurrentContext, key, val);
+					return true;
+				}
+			}
+            
+			if(op == "assignItem"){
+				byte[] itemId = (byte[])args[0];
+				if (itemId[0] != 'i')
+                {
+                    return false;
+                }
+				else{
+					byte[] userId = (byte[])args[1];
+					Storage.Put(Storage.CurrentContext, "a"+, val);
+				}
+			}
+
+
         }
     }
 }
