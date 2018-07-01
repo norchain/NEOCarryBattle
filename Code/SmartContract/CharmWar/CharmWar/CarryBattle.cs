@@ -13,22 +13,26 @@ namespace CarryBattle
 
 	public class CarryBattle : SmartContract
     {
-
+        #region AssistClasses
 		/** The Global Constants */
-        public static class Const
+		public static class Const
         {
             public const int LenPlayer = 20;
+			public const int NumCardsPerPlayer = 10;
+			public const int SizeCard = 4;
+			public const int NumRegisterCard = 10;
 
-            public const string NumCardLive = "ncl";
-            public const string NumCardDead = "ncd";
-            public const string NumWarLive = "nwl";
-            public const string NumWarDead = "nwd";
 
-            public const string PrixCardLive = "pcl";
-            public const string PrixCardDead = "pcd";
-            public const string PrixWarLive = "pwl";
-            public const string PrixWarDead = "pwd";
-            public const string PrixOwner = "po";
+            public const string NumCardLive = "nC";
+            public const string NumCardDead = "nc";
+            public const string NumWarLive = "nW";
+            public const string NumWarDead = "nw";
+
+            public const string PxCardLive = "pC";
+            public const string PxCardDead = "pc";
+            public const string PxWarLive = "pW";
+            public const string PxWarDead = "pw";
+            public const string PxOwner = "po";
         }
 
 		/** The result state of Storage.Put Operation */
@@ -44,7 +48,6 @@ namespace CarryBattle
         /** The Utilities */
         public static class Utils
         {
-            #region StorageInteraction
             
 			public static byte[] KeyPath(params string[] elements)
             {
@@ -121,13 +124,13 @@ namespace CarryBattle
             }
 
             
-            #endregion
         }
-
         
+        #endregion
 
-        /** The types of army */
-        public static class TypeArmy
+        #region LogicClasses
+		/** The types of army */
+		public static class TypeArmy
         {
             public const byte Infantry = 0;
             public const byte Archer = 1;
@@ -136,7 +139,7 @@ namespace CarryBattle
         }
 
 
-
+        
         [Serializable]
         public class Card
         {
@@ -144,35 +147,225 @@ namespace CarryBattle
              * Intrinsic Properties
             */
             public byte type;   //TypeArmy
-            public byte[] levels;    // Range: 0 - 255
-            public byte[] parentCard1;
-            public byte[] parentCard2;
+            public byte[] lvls;    // Range: 0 - 255
+			public BigInteger prtID1;
+			public BigInteger prtID2;
+			public byte[] creatorID;
 
-            /**
-             * Dynamic Properties
-            */
 
         }
+
+		[Serializable]
+		public class CardDynamic{
+			/**
+             * Dynamic Properties
+            */
+			public BigInteger cID;
+            public byte[] ownerID;
+            public BigInteger childID;
+            public BigInteger score;
+            public BigInteger wins;
+            public BigInteger loss;
+            public BigInteger warID;
+		}
 
         [Serializable]
         public class War
         {
+			/**
+             * Intrinsic Properties
+            */
             public byte[] endHeight;
+			public byte[] creator;
+
+
+        }
+
+		[Serializable]
+		public class WarDynamic{
+			public BigInteger wID;
+
             public byte[] cardIDs;
-        }
+		}
 
+        #endregion
 
+		#region Entrance
+		public static readonly byte[] Owner = "AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y".ToScriptHash();
 
-		public static byte[] Main(string operation, byte[] paras)
+		public static object Main(string operation, params object[] args)
         {
-			if (operation == "war"){
-				
+			if (Runtime.Trigger == TriggerType.Verification){
+				if(Owner.Length == 20){
+					return Runtime.CheckWitness(Owner);
+				}
+				else if ( Owner.Length == 33){
+					byte[] signature = operation.AsByteArray();
+                    return VerifySignature(signature, Owner);
+				}
+				return true;
 			}
-			byte[] r = new byte[1];
+			else if(Runtime.Trigger == TriggerType.Application){
+				if (operation == "register")
+                {// Register new user, will generate a few cards thereof
 
-			return r;
+                    return Register(args);
+                }
+                if (operation == "warStart")
+                {
+					return WarStart(args);
+                }
+                if (operation == "warJoin")
+                {
+					return WarJoin(args);
+
+                }
+                if (operation == "warRetreat")
+                {
+					return WarRetreat(args);
+
+                }
+
+                if (operation == "cardMerge")
+                {
+					return CardMerge(args);
+                }
+                if (operation == "cardTransfer")
+                {
+					return CardTransfer(args);
+                }
+                if (operation == "getNumPlayers")
+                {
+					return true;
+                }
+                if (operation == "getNumCards")
+                {// Register new user, will generate a few cards thereof
+					return GetNumCards();
+                }
+
+				if (operation == "getCardInfo")
+                {// Register new user, will generate a few cards thereof
+					return true;
+                }
+
+                byte[] r = new byte[1];
+
+                return r;
+			}
+			else{   //Will elabrate for other cases
+				return false;
+			}
+
         }
-       
+		#endregion
+
+		#region BasicInformation
+
+
+		#endregion
+        
+		private static Card _GenCardWithOwner(byte[] owner,int seed){
+			Card card = new Card();
+            /*
+              TBD: The algorithm to generate card  
+            */
+
+			card.type = Convert.ToByte(seed % 3);
+			card.creatorID = owner;
+			int grids = Const.SizeCard * Const.SizeCard;
+			byte[] levels = new byte[grids];
+			for (int i = 0; i < grids; i++){
+				levels[i] = Convert.ToByte((seed << i) % 2);
+			}
+			card.lvls = levels;
+			return card;
+   
+		}
+
+		public static BigInteger GetNumPlayers(){
+			return Utils.GetStorageWithKey("Gp").AsBigInteger();
+		}
+
+		public static BigInteger GetNumCards()
+        {
+            return Utils.GetStorageWithKey("GC").AsBigInteger();
+        }
+
+		public static BigInteger GetHighestCardOrder()
+        {
+            return Utils.GetStorageWithKey("Gc").AsBigInteger();
+        }
+
+		public static byte[] PlayerAddress(BigInteger id)
+        {
+			return Utils.GetStorageWithKeyPath("P"+id.ToString(),"a");
+        }
+
+		/* =================================================
+         * Player Registeration: Will give 10 cards for free
+         ====================================================*/
+		public static Object Register(params object[] args){
+			if (args.Length < 1) return false;
+
+			byte[] from = (byte[])args[0];
+			if(!Runtime.CheckWitness(from)){
+				return false;
+			}
+			else{
+				BigInteger numPlayers = GetNumPlayers();
+				for (BigInteger i = 0; i < numPlayers;i++){
+					if(PlayerAddress(i) == from){
+						return false;
+					}
+				}
+				//If logic goes here, this is a new user. record it.
+				Utils.SetStorageWithKeyPath(from, "P" + numPlayers.ToString(), "a");
+				Utils.SetStorageWithKey("Gp", BigInteger.Add(numPlayers,1).AsByteArray());
+				int hash = Blockchain.GetHeader(Blockchain.GetHeight()).GetHashCode();
+				for (int i = 0; i < Const.NumRegisterCard;i++){
+					Card card = _GenCardWithOwner(from,hash);
+					BigInteger id = BigInteger.Add(GetNumCards(), 1);
+					byte[] rawCard = CardToBytes(card);
+					Utils.SetStorageWithKeyPath(rawCard,"C", id.ToString());
+				}
+				return true;
+			}
+		}
+
+
+		/* =================================================
+         * Card Related Functions
+         ====================================================*/
+		
+		public static Object CardMerge(params object[] args)
+        {
+            return false;
+        }
+
+		public static Object CardTransfer(params object[] args)
+        {
+            return false;
+        }
+
+		/* =================================================
+         * War Related Functions
+         ====================================================*/
+
+		public static Object WarStart(params object[] args){
+			return false;
+		}
+
+		public static Object WarJoin(params object[] args)
+        {
+            return false;
+        }
+
+		public static Object WarRetreat(params object[] args)
+        {
+            return false;
+        }
+
+
 
 		/* ================
         * Basic Get Information
@@ -209,6 +402,20 @@ namespace CarryBattle
 
         //}
 
+		private static Card BytesToCard(byte[] bytes){
+			if(bytes.Length ==0){
+				return null;
+			}
+			else{
+				object[] objs = (object[])Helper.Deserialize(bytes);
+                return (Card)(object)objs;
+			}
+		}
+
+		private static byte[] CardToBytes(Card card)
+        {
+			return Helper.Serialize(card);
+        }
 
 		private static Card _GetCard(byte[] cardID){
 			byte[] raw = GetCardRaw(cardID);

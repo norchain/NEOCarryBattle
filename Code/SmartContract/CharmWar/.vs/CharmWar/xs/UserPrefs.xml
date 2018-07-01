@@ -1,15 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workbench ActiveDocument="CharmWar/CarryBattle.cs">
     <Files>
-      <File FileName="CharmWar/CarryBattle.cs" Line="52" Column="18" NotebookId="1" />
+      <File FileName="CharmWar/CarryBattle.cs" Line="59" Column="22" />
     </Files>
-    <FloatingWindows>
-      <FloatingWindow WindowId="1" X="920" Y="153" Width="1000" Height="855">
-        <Files>
-          <File FileName="CharmWar/TestContract.cs" Line="95" Column="21" />
-        </Files>
-      </FloatingWindow>
-    </FloatingWindows>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
