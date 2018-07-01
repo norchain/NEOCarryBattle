@@ -1,12 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="CharmWar/TestContract.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CharmWar/CarryBattle.cs">
     <Files>
-      <File FileName="CharmWar/CarryBattle.cs" Line="77" Column="13" NotebookId="1" />
+      <File FileName="CharmWar/CarryBattle.cs" Line="52" Column="18" NotebookId="1" />
     </Files>
     <FloatingWindows>
-      <FloatingWindow WindowId="1" X="776" Y="23" Width="1000" Height="855">
+      <FloatingWindow WindowId="1" X="920" Y="153" Width="1000" Height="855">
         <Files>
-          <File FileName="CharmWar/TestContract.cs" Line="72" Column="22" />
+          <File FileName="CharmWar/TestContract.cs" Line="95" Column="21" />
         </Files>
       </FloatingWindow>
     </FloatingWindows>

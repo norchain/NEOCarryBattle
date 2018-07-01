@@ -83,22 +83,20 @@ namespace Neo.SmartContract
 								break;
 							}
 						case State.Delete:{
-								BigInteger currentNum = Utils.GetStorageWithKey(Const.numItems).AsBigInteger();
                                 Utils.SetStorageWithKey(Const.numItems, BigInteger.Subtract(currentNum, 1).AsByteArray());
 								break;
 							}
-
-							break;
+                            
 						default:
 							break;
 					}
                  
 
-
+                    
 					byte[] ex = Storage.Get(Storage.CurrentContext, key);
 					if(ex.Length == 0){ //Not exist yet
-						BigInteger currentNum = Storage.Get(Storage.CurrentContext, "cNumItems").AsBigInteger();
-						Storage.Put(Storage.CurrentContext, "cNumItems", BigInteger.Add(currentNum, 1));
+						BigInteger num = Storage.Get(Storage.CurrentContext, "cNumItems").AsBigInteger();
+						Storage.Put(Storage.CurrentContext, "cNumItems", BigInteger.Add(num, 1));
                         
 					}
 					Storage.Put(Storage.CurrentContext, key, val);
@@ -114,10 +112,11 @@ namespace Neo.SmartContract
                 }
 				else{
 					byte[] userId = (byte[])args[1];
-					Storage.Put(Storage.CurrentContext, "a"+, val);
+					Storage.Put(Storage.CurrentContext, "a", userId);
+					return true;
 				}
 			}
-
+			return false;
 
         }
     }
