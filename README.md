@@ -35,7 +35,7 @@
 ## 相关资源
 
 首支[宣传视频](https://youtu.be/PdRJCIeihiY):
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PdRJCIeihiY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[![Preview In Youtube](http://www.imageurl.ir/images/49948090059693353969.png)](https://youtu.be/PdRJCIeihiY)
 
 即时通信社区：[Discord](<https://discord.gg/pKQyyrP> )
 
