@@ -157,7 +157,7 @@ namespace CarryBattle
             */
             public byte type;   //TypeArmy
             public byte[] lvls;    // Range: 0 - 255
-			public BigInteger prtID1;
+			public BigInteger prtID1; // parent id
 			public BigInteger prtID2;
 			public BigInteger creator;
 			public BigInteger owner;
@@ -182,7 +182,7 @@ namespace CarryBattle
         {
             public BigInteger cID;
             public BigInteger warID;
-            public byte warPos;
+            public byte warPos; // order in the 10 list
 
         }
 
@@ -195,8 +195,8 @@ namespace CarryBattle
 
 		[Serializable]
 		public class Global{
-			public BigInteger numCards;
-			public BigInteger highestLiveCardId;
+			public BigInteger numCards; // total number
+			public BigInteger highestLiveCardId; 
 			public BigInteger numWars;
 			public BigInteger highestLiveWarId;
 			public BigInteger numUsers;
