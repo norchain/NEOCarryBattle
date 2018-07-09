@@ -1,7 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="CharmWar/CarryBattle.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="CharmWar/CarryBattle.cs" Line="59" Column="22" />
+      <File FileName="CharmWar/CarryBattle.cs" Line="359" Column="36" />
+      <File FileName="CharmWar/TestContract.cs" Line="17" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
