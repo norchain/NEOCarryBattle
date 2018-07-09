@@ -639,14 +639,46 @@ namespace CarryBattle
                     byte[] cardRaw = Utils.GetStorageWithKeyPath("pC", idString, "c");
 
                 }
-				return false;
+				return true;
             }
 
         }
 
+        /*
+         * first argu: Card current owner id: BigInteger
+         * second argu: Card receiver id: BigInteger
+         * third argu: Card id to be transfered: BigInteger
+         * */
         public static Object CardTransfer(params object[] args)
         {
-            return false;
+            if (args.Length < 3) return false;
+
+            BigInteger currentOwnerId = (BigInteger)args[0];
+            BigInteger receiverId = (BigInteger)args[1];
+            BigInteger cardId = (BigInteger)args[2];
+
+            User currentOwner = GetUserById(currentOwnerId);
+            User receiver = GetUserById(receiverId);
+            Card card = GetCardById(cardId);
+
+            // check input validity
+            if (currentOwner != null && receiver != null & card != null) 
+            {
+                // check if its legal to transfer
+                if (card.owner == currentOwnerId)
+                {
+                    card.owner = receiverId;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            } else 
+            {
+                // input not valid
+                return false;
+            }
         }
 
         #endregion
