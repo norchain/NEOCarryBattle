@@ -209,7 +209,7 @@ namespace CarryBattle
 		/** CardAct belongs to another "list" in storage other than the Cards. 
 		 * CardAct的设计存在是为了缩减在所有卡堆里搜索的时间。
 		 * 具体而言，
-		 * 1. 所有现存以及死去（被合并）的卡牌都存在以PxCard为前缀的Storage里，而现存的Card同时以CardAct结构存在以PxCardAct为前缀的Storage里
+		 * 1. 所有现存以及死去（被合并）的卡牌都以Card结构存在以PxCard为前缀的Storage里，而现存的Card同时以CardAct结构存在以PxCardAct为前缀的Storage里
 		 * 2. 当协约函数需要遍历寻找一张现存的Card时，只需要在PxCardAct里搜索，然后通过cID字段直接定位到PxCard里一张牌的信息。
 		 * 3. 当一张卡片死去时，将其从PxCardAct里置空即可。
 		 * 4. 当新卡牌生成时，要在PxCard里以最高序号+1加入;同时在PxCardAct里以第一个空序号加入。
