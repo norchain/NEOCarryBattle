@@ -153,43 +153,7 @@ namespace CarryBattle
 				}
 			}
 
-			//Serialize function is not supported by Unity. Use the customized one
-			public static byte[] Serialize(Card card)
-            {
-				//byte type
-				//byte[] lvls
-				byte[] prtID1 = card.prtID1.ToByteArray();
-				byte[] prtID2 = card.prtID2.ToByteArray();
-				byte[] creator = card.creator.ToByteArray();
-				byte[] owner = card.owner.ToByteArray();
-				byte[] score = card.score.ToByteArray();
-				byte[] wins = card.wins.ToByteArray();
-				byte[] wars = card.wars.ToByteArray();
 
-				int length = 1 + 
-					Const.SizeCard* Const.SizeCard + 
-				         prtID1.Length + 
-				         prtID2.Length + 
-				         creator.Length + 
-				         owner.Length +
-
-				byte[] c = new byte[];
-            }
-
-            public static Card Deserialize(byte[] data)
-            {
-
-            }
-
-            public static byte[] Serialize(CardAct cardact)
-            {
-
-            }
-
-            public static Card Deserialize(byte[] data)
-            {
-
-            }
 
 			#endregion
 		}
