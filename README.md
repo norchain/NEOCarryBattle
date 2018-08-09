@@ -37,7 +37,9 @@
 首支[宣传视频](https://youtu.be/PdRJCIeihiY):
 [![Preview In Youtube](http://www.imageurl.ir/images/68301098834895736863.png)](https://youtu.be/PdRJCIeihiY)
 
-即时通信社区：[Discord](<https://discord.gg/pKQyyrP> )
+试玩地址: [海外](http://www.norchain.io/neounity)  [中国大陆](http://119.23.254.156/neounity/)
+
+即时通信社区: [Discord](<https://discord.gg/pKQyyrP> )
 
 Twitter: https://twitter.com/carry_battle
 
