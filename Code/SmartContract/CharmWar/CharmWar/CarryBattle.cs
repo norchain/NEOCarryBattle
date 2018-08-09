@@ -16,35 +16,56 @@ namespace CarryBattle
 		/** The Global Constants */
 		public static class Const
         {
-            public const int LenPlayer = 20;
+            public const char Sspliter = '\n'
+
+			/** Pending Usage */
+			public const int LenPlayer = 20;      
+			/** Pending Usage */
 			public const int NumCardsPerPlayer = 10;
+			/** The border length of every card */
 			public const int SizeCard = 4;
+			/** The number of card sent for new user registeration */
 			public const int NumRegisterCard = 10;
+			/** If a card is not participating any war, in its related CardAct, put warPos = NowarPos */
 			public const byte NowarPos = 255;
-
-
+            
+			/** Pending Usage */
             public const string NumCardLive = "nC";
+			/** Pending Usage */
             public const string NumCardDead = "nc";
+			/** Pending Usage */
             public const string NumWarLive = "nW";
+			/** Pending Usage */
             public const string NumWarDead = "nw";
 
+			/** Prefix of cards in Storage */
             public const string PxCard = "C";
+			/** Prefix of live cards in Storage */
             public const string PxCardAct = "CA";
+			/** Prefix of wars in Storage */
             public const string PxWar = "W";
+			/** Prefix of users in Storage */
 			public const string PxUser = "U";
-
-            public const string PxWarDead = "pw";
-            public const string PxOwner = "po";
+			/** Prefix of live wars in Storage */
+            public const string PxWarAct = "WA";
+			/** Prefex of all owners */
+            public const string PxOwner = "O";
         }
 
 		/** The result state of Storage.Put Operation */
         public static class State
         {
+			/** The Put action created a new item */
             public const byte Create = 0;
+			/** The Put action updated an existing item */
             public const byte Update = 1;
+			/** The Put action deleted an existing item */
             public const byte Delete = 2;
+			/** The Put action did no effect */
             public const byte Unchanged = 3;
+			/** The Put action is aborted for some reason*/
 			public const byte Abort = 4;
+			/** The Put action is invalid */
             public const byte Invalid = 99;
         }
 
@@ -132,10 +153,14 @@ namespace CarryBattle
 				}
 			}
 
+
+
 			#endregion
 		}
         
-        
+		public class CBInteger{
+			private 
+		}
 
         #region LogicClasses
 		/** The types of army */
@@ -155,14 +180,23 @@ namespace CarryBattle
             /**
              * Intrinsic Properties
             */
-            public byte type;   //TypeArmy
+			/** Type of the Army */
+            public byte type;  
+			/** lvls includes SizeCard * SizeCard bytes. Holding the levels of each grid. Value 0 stands for empty grid.*/
             public byte[] lvls;    // Range: 0 - 255
+			/** The parent card 1 */
 			public BigInteger prtID1;
+			/** The parent card 2 */
 			public BigInteger prtID2;
+			/** The creator user address of this card*/
 			public BigInteger creator;
+			/** The current owner address of this card */
 			public BigInteger owner;
+			/** The score of this card */
             public BigInteger score;
+			/** The win wars of this card */
             public BigInteger wins;
+			/** The number of wars of this card*/
             public BigInteger wars;
 
         }
@@ -172,33 +206,54 @@ namespace CarryBattle
         [Serializable]
         public class War
         {
+			/** The blockchain height of the finalization of this war */
             public byte[] endHeight;
+			/** The creator of this war */
 			public BigInteger creator;         
         }
 
-
+		/** CardAct belongs to another "list" in storage other than the Cards. 
+		 * CardAct的设计存在是为了缩减在所有卡堆里搜索的时间。
+		 * 具体而言，
+		 * 1. 所有现存以及死去（被合并）的卡牌都以Card结构存在以PxCard为前缀的Storage里，而现存的Card同时以CardAct结构存在以PxCardAct为前缀的Storage里
+		 * 2. 当协约函数需要遍历寻找一张现存的Card时，只需要在PxCardAct里搜索，然后通过cID字段直接定位到PxCard里一张牌的信息。
+		 * 3. 当一张卡片死去时，将其从PxCardAct里置空即可。
+		 * 4. 当新卡牌生成时，要在PxCard里以最高序号+1加入;同时在PxCardAct里在第一个空序号插入。
+		 
+         */
 		[Serializable]
         public class CardAct
         {
+			/** The index of the Card in PxCard */
             public BigInteger cID;
+			/** The index of the war that the card is participating now */
             public BigInteger warID;
+			/** The position of the card in the war it's participating */
             public byte warPos;
 
         }
 
 		[Serializable]
 		public class User{
+			/** The address of the user */
 			public byte[] address;
+			/** The arbitary name of the user*/
 			public byte[] name;
+			/** The war the player is participating */
 			public BigInteger warID;
 		}
 
 		[Serializable]
 		public class Global{
+			/** Total number of the cards */
 			public BigInteger numCards;
+			/** The highest index of the PxCardAct */
 			public BigInteger highestLiveCardId;
+			/** Total number of the wars */
 			public BigInteger numWars;
+			/** The highest index of the PxWarAct */
 			public BigInteger highestLiveWarId;
+			/** Total number of users */
 			public BigInteger numUsers;
 		}
 
@@ -220,36 +275,40 @@ namespace CarryBattle
 				return true;
 			}
 			else if(Runtime.Trigger == TriggerType.Application){
+				// Register new user, will generate a few cards thereof
 				if (operation == "userRegister")
-                {// Register new user, will generate a few cards thereof
+                {
 
                     return UserRegister(args);
                 }
-
+				// Rename a new user
 				if (operation == "userRename")
                 {
 					return UserRename(args);
                
                 }
-
+				// Merage two cards.
 				if (operation == "cardMerge")
                 {
                     return CardMerge(args);
                 }
+				// Change the owner of a card
                 if (operation == "cardTransfer")
                 {
                     return CardTransfer(args);
                 }
-
+				// Start a war
                 if (operation == "warStart")
                 {
 					return WarStart(args);
                 }
+				// Join a war
                 if (operation == "warJoin")
                 {
 					return WarJoin(args);
 
                 }
+				// Retreat from a war
                 if (operation == "warRetreat")
                 {
 					return WarRetreat(args);
@@ -327,6 +386,8 @@ namespace CarryBattle
 			return Utils.SetStorageWithKey(Const.PxUser + id.ToString(), UserToBytes(user));
         }
 
+
+		/**  */
 		public static bool UserRegister(params object[] args){
 			if (args.Length < 2) return false;
 
