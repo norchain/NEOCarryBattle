@@ -20,18 +20,7 @@ namespace Neunity.App {
 
         public static readonly byte[] Owner = "AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y".ToScriptHash();
 
-        public static byte[] Random(byte[] salt, int size = 1)
-        {
-            Transaction tx = (Transaction)ExecutionEngine.ScriptContainer;
-            Header bl = Blockchain.GetHeader(Blockchain.GetHeight());
-            return Hash256(bl.Hash.Concat(tx.Hash).Concat(salt)).Range(0, size);
-        }
 
-        public static byte[] Rand(int size = 1){
-            Transaction tx = (Transaction)ExecutionEngine.ScriptContainer;
-            Header bl = Blockchain.GetHeader(Blockchain.GetHeight());
-            return Hash256(bl.Hash.Concat(tx.Hash)).Range(0, size);
-        }
 
         public static object Main(string operation, params object[] args)
         {
@@ -184,9 +173,11 @@ namespace Neunity.App {
                 }
 
             }
-            return false;
+            return NuTP.RespDataWithCode(NuTP.SysDom,NuTP.Code.NotFound);
         }
 
+
+        #region Regular Invokes
         /** Register the user onto a server. 
          * 
          * 用户注册/登录 （由于钱包功能尚不支持，Demo阶段暂时使用用户邮箱/密码作为认证方法。若有变动将在Global.VerifyUser()方法里变更实现）
@@ -530,7 +521,7 @@ namespace Neunity.App {
                 return NuTP.RespDataWithCode(ErrCate.Account, ErrType.AuthFail);
             }
         }
-
+        #endregion
 
         #region Priviledge Operations
         public static byte[] Genesis(BigInteger serverID)
@@ -642,7 +633,19 @@ namespace Neunity.App {
         #endregion
 
         #region Randomness
+        public static byte[] Random(byte[] salt, int size = 1)
+        {
+            Transaction tx = (Transaction)ExecutionEngine.ScriptContainer;
+            Header bl = Blockchain.GetHeader(Blockchain.GetHeight());
+            return Hash256(bl.Hash.Concat(tx.Hash).Concat(salt)).Range(0, size);
+        }
 
+        public static byte[] Rand(int size = 1)
+        {
+            Transaction tx = (Transaction)ExecutionEngine.ScriptContainer;
+            Header bl = Blockchain.GetHeader(Blockchain.GetHeight());
+            return Hash256(bl.Hash.Concat(tx.Hash)).Range(0, size);
+        }
         /// <summary>
         /// 给指定用户产生随机初始卡
         /// 返回实际生成的卡牌数量

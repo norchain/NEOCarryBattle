@@ -131,101 +131,101 @@ namespace CarryBattleSC {
 
 
         //地形加成
-        public static float GetTerrainAdditionRate(BigInteger armyType, BigInteger terrain) {
-            float result = 1.0f;
-            if(armyType == TypeArmy.Infantry) {
-                if(terrain == Plain) {
-                    result = 1.25f;
-                } else if(terrain == Valley) {
-                    result = 1.0f;
-                } else if(terrain == Forest) {
-                    result = 1.5f;
-                }
-            } else if(armyType == TypeArmy.Archer) {
-                if(terrain == Plain) {
-                    result = 1.0f;
-                } else if(terrain == Valley) {
-                    result = 1.5f;
-                } else if(terrain == Forest) {
-                    result = 1.25f;
-                }
-            } else if(armyType == TypeArmy.Cavalry) {
-                if(terrain == Plain) {
-                    result = 1.5f;
-                } else if(terrain == Valley) {
-                    result = 1.25f;
-                } else if(terrain == Forest) {
-                    result = 1.0f;
-                }
-            }
-            return result;
-        }
+        //public static float GetTerrainAdditionRate(BigInteger armyType, BigInteger terrain) {
+        //    float result = 1.0f;
+        //    if(armyType == TypeArmy.Infantry) {
+        //        if(terrain == Plain) {
+        //            result = 1.25f;
+        //        } else if(terrain == Valley) {
+        //            result = 1.0f;
+        //        } else if(terrain == Forest) {
+        //            result = 1.5f;
+        //        }
+        //    } else if(armyType == TypeArmy.Archer) {
+        //        if(terrain == Plain) {
+        //            result = 1.0f;
+        //        } else if(terrain == Valley) {
+        //            result = 1.5f;
+        //        } else if(terrain == Forest) {
+        //            result = 1.25f;
+        //        }
+        //    } else if(armyType == TypeArmy.Cavalry) {
+        //        if(terrain == Plain) {
+        //            result = 1.5f;
+        //        } else if(terrain == Valley) {
+        //            result = 1.25f;
+        //        } else if(terrain == Forest) {
+        //            result = 1.0f;
+        //        }
+        //    }
+        //    return result;
+        //}
 
         //天气加成
-        public static float GetWeatherdditionRate(BigInteger armyType, BigInteger weather) {
-            float result = 1.0f;
-            if(armyType == TypeArmy.Infantry) {
-                if(weather == Rain) {
-                    result = 0.5f;
-                } else if(weather == Snow) {
-                    result = 0.75f;
-                } else if(weather == Wind) {
-                    result = 1.0f;
-                }
-            } else if(armyType == TypeArmy.Archer) {
-                if(weather == Rain) {
-                    result = 0.75f;
-                } else if(weather == Snow) {
-                    result = 1.0f;
-                } else if(weather == Wind) {
-                    result = 0.5f;
-                }
-            } else if(armyType == TypeArmy.Cavalry) {
-                if(weather == Rain) {
-                    result = 1.0f;
-                } else if(weather == Snow) {
-                    result = 0.5f;
-                } else if(weather == Wind) {
-                    result = 0.75f;
-                }
-            }
-            return result;
-        }
+        //public static float GetWeatherdditionRate(BigInteger armyType, BigInteger weather) {
+        //    float result = 1.0f;
+        //    if(armyType == TypeArmy.Infantry) {
+        //        if(weather == Rain) {
+        //            result = 0.5f;
+        //        } else if(weather == Snow) {
+        //            result = 0.75f;
+        //        } else if(weather == Wind) {
+        //            result = 1.0f;
+        //        }
+        //    } else if(armyType == TypeArmy.Archer) {
+        //        if(weather == Rain) {
+        //            result = 0.75f;
+        //        } else if(weather == Snow) {
+        //            result = 1.0f;
+        //        } else if(weather == Wind) {
+        //            result = 0.5f;
+        //        }
+        //    } else if(armyType == TypeArmy.Cavalry) {
+        //        if(weather == Rain) {
+        //            result = 1.0f;
+        //        } else if(weather == Snow) {
+        //            result = 0.5f;
+        //        } else if(weather == Wind) {
+        //            result = 0.75f;
+        //        }
+        //    }
+        //    return result;
+        //}
         /// <summary>
         /// Gets the advantage addition rate.
         /// </summary>
         /// <returns>The advantage addition rate of armyType1 when vs. armyType2 </returns>
         /// <param name="armyType1">Army type1.</param>
         /// <param name="armyType2">Army type2.</param>
-        public static float GetAdvantageAdditionRate(BigInteger armyType1, BigInteger armyType2) {
-            float result = 1.0f;
-            if(armyType1 == TypeArmy.Infantry) {
-                if(armyType2 == TypeArmy.Cavalry) {
-                    result = 0.75f;
-                } else if(armyType2 == TypeArmy.Infantry) {
-                    result = 1f;
-                } else if(armyType2 == TypeArmy.Archer) {
-                    result = 1.5f;
-                }
-            } else if(armyType1 == TypeArmy.Archer) {
-                if(armyType2 == TypeArmy.Infantry) {
-                    result = 0.75f;
-                } else if(armyType2 == TypeArmy.Archer) {
-                    result = 1f;
-                } else if(armyType2 == TypeArmy.Cavalry) {
-                    result = 1.5f;
-                }
-            } else if(armyType1 == TypeArmy.Cavalry) {
-                if(armyType2 == TypeArmy.Archer) {
-                    result = 0.75f;
-                } else if(armyType2 == TypeArmy.Cavalry) {
-                    result = 1f;
-                } else if(armyType2 == TypeArmy.Infantry) {
-                    result = 1.5f;
-                }
-            }
-            return result;
-        }
+        //public static float GetAdvantageAdditionRate(BigInteger armyType1, BigInteger armyType2) {
+        //    float result = 1.0f;
+        //    if(armyType1 == TypeArmy.Infantry) {
+        //        if(armyType2 == TypeArmy.Cavalry) {
+        //            result = 0.75f;
+        //        } else if(armyType2 == TypeArmy.Infantry) {
+        //            result = 1f;
+        //        } else if(armyType2 == TypeArmy.Archer) {
+        //            result = 1.5f;
+        //        }
+        //    } else if(armyType1 == TypeArmy.Archer) {
+        //        if(armyType2 == TypeArmy.Infantry) {
+        //            result = 0.75f;
+        //        } else if(armyType2 == TypeArmy.Archer) {
+        //            result = 1f;
+        //        } else if(armyType2 == TypeArmy.Cavalry) {
+        //            result = 1.5f;
+        //        }
+        //    } else if(armyType1 == TypeArmy.Cavalry) {
+        //        if(armyType2 == TypeArmy.Archer) {
+        //            result = 0.75f;
+        //        } else if(armyType2 == TypeArmy.Cavalry) {
+        //            result = 1f;
+        //        } else if(armyType2 == TypeArmy.Infantry) {
+        //            result = 1.5f;
+        //        }
+        //    }
+        //    return result;
+        //}
     }
 
 
