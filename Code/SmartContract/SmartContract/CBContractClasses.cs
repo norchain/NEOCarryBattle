@@ -8,50 +8,20 @@ using Neo.SmartContract.Framework;
 using Neo.SmartContract.Framework.Services.Neo;
 #else
 using Neunity.Adapters.Unity;
+using System.Linq;
 #endif
 
 
 
-namespace CarryBattleSC {
+namespace CarryBattleSC
+{
 
 
     /** 
-        NuSD: 
-        <user> = [ S<email>
-                   ,S<pswHash>
-                   ,S<address>
-                   ,S<nickName>
-                   ,S<icon>
-                   ,S<serverID>
-                   ,S<city>
-                   ,S<warID>
-                   ,S[(S<cardId>)^10]
-                 ]
-    */
-    public class User {
-        public string email;
-        public byte[] pswHash;
-        public byte[] address;
-        public string nickName;
-        public BigInteger icon;
-        public BigInteger serverID;
-        public BigInteger city;    //The city the user occupied. If city = Const.numCities, the user is at large
-        public byte[] warID;
-        public Card[] cards;
-
-    }
-
-
-    /** 
-        NuSD: 
-        <card> = [  S<cardID>
-                   ,S<type#1>
-                   ,S<lvls#10>
-                   ,S<ownerEmail>
-                   ,S<warPos#1>
-                 ]
-    */
-    public class Card {
+    NuSD: <card> = [ S<cardID>,S<type#1>,S<lvls#9>,S<ownerEmail>,S<warPos#1> ]
+*/
+    public class Card
+    {
         public byte[] cardID;
         public BigInteger type;   //TypeArmy
         public byte[] lvls;    // Range: 0 - 255
@@ -61,125 +31,207 @@ namespace CarryBattleSC {
 
     }
 
-
-
-    public class CardLive {
-        public BigInteger cardId;
-    }
-
-
-    public class City {
-        public BigInteger status;
-        public string ownerID;
-
-        public BigInteger weather;
-        public BigInteger windDirection;
-        public BigInteger windStrength;
-        //---- non-storage ----
-        public BigInteger id;
-    }
-
-    public class Seige {
+    /** 
+        NuSD: <user> = [ S<email>,S<pswHash>,S<address>,S<nickName>,S<icon>,
+                   S<score>,S<serverID>,S<city>,S<warID>,S[(S<cardId>)*10]]
+    */
+    public class User
+    {
+        public string email;
+        public byte[] pswHash;
+        public byte[] address;
+        public string nickName;
+        public BigInteger icon;
+        public BigInteger score;
         public BigInteger serverID;
-        public BigInteger city;
-        public string ownerEmail;
-        public string seigerEmail;
-        public byte[] id;
+        public BigInteger city;    //The city the user occupied. If city = Const.zero, the user is free
+        public byte[] warID;
+        public Card[] cards;
 
     }
 
 
-    public static class RW {
-        public static byte[] Card2Bytes(Card card) {
-            byte[] segId = NuSD.Seg(card.cardID);
-            byte[] segtype = NuSD.SegInt(card.type);
-            byte[] segLvl = NuSD.Seg(card.lvls);
-            byte[] segOwner = NuSD.SegString(card.ownerEmail);
-            byte[] segPos = NuSD.SegInt(card.warPos);
-            return NuSD.JoinSegs2Table(segId, segtype, segLvl, segOwner, segPos);
+
+
+    /**
+     * NuSD: <city> = [S<cityId>,S<ownerId>,S<siegeId>]
+    */
+    public class City
+    {
+        public BigInteger cityId;
+        public BigInteger serverID;
+        //public BigInteger status;
+        public string ownerID;  //email
+        public byte[] siegeID;
+        public Card[] ownerCards;
+    }
+
+    public class Siege
+    {
+        public byte[] id;
+        public BigInteger serverID;
+        public BigInteger cityID;
+        public string ownerEmail;
+        public string siegerEmail;
+        public BigInteger startHeight;
+        public BigInteger endHeight;
+        public BigInteger ownerScore;
+        public BigInteger siegerScore;
+        public Card[] ownerCards;
+        public Card[] siegeCards;
+    }
+
+
+    /**
+        The basic read, write, search actions for basic classes
+    */
+
+    public static class RW
+    {
+        #region Cards
+        public static byte[] Card2Bytes(Card card)
+        {
+            if (card == null)
+            {
+                return Op.Void();
+            }
+            else
+            {
+                return NuSD.Seg(card.cardID)
+                       .AddSegInt(card.type)
+                       .AddSeg(card.lvls)
+                       .AddSegStr(card.ownerEmail)
+                       .AddSegInt(card.warPos);
+            }
         }
 
 
-        public static Card Bytes2Card(byte[] data) {
-            Card card = new Card();
-            card.cardID = NuSD.DesegWithIdFromTable(data, 0);
-            card.type = Op.Bytes2BigInt(NuSD.DesegWithIdFromTable(data, 1));
-            card.lvls = NuSD.DesegWithIdFromTable(data, 2);
-            card.ownerEmail = Op.Bytes2String(NuSD.DesegWithIdFromTable(data, 3));
-            card.warPos = Op.Bytes2BigInt(NuSD.DesegWithIdFromTable(data, 4));
-
-            return card;
-        }
-
-        public static Card ToCard(this byte[] data) => Bytes2Card(data);
-
-        public static byte[] City2Bytes(City city) {
-            return new byte[0];
-        }
-        public static City Bytes2City(byte[] data) {
-            return new City();
-        }
-
-
-        public static byte[] Seige2Bytes(Seige war) {
-            return new byte[0];
-        }
-        public static Seige Bytes2Seige(byte[] data) {
-            return new Seige();
-        }
-
-        public static byte[] User2Bytes(User user) {
-            byte[] segCardIds = Op.Empty;
-            for (int i = 0; i < user.cards.Length;i++){
-                segCardIds = segCardIds.AddSeg(user.cards[i].cardID);
-                //segCardIds = Op.JoinTwoByteArray(segCardIds, NuSD.Seg(user.cards[i].cardID));
+        public static Card Bytes2Card(byte[] data)
+        {
+            if (data.Length == 0)
+            {
+                return null;
+            }
+            else
+            {
+                Card card = new Card
+                {
+                    cardID = data.SplitTbl(0),
+                    type = data.SplitTblInt(1),
+                    lvls = data.SplitTbl(2),
+                    ownerEmail = data.SplitTblStr(3),
+                    warPos = data.SplitTblInt(4)
+                };
+                return card;
             }
 
-            return Op.Empty
-                     .AddSegStr(user.email)
+        }
+
+        public static Card[] Table2Cards(byte[] table)
+        {
+
+            int num = table.SizeTable();
+            Card[] cards = new Card[num];
+            for (int i = 0; i < num; i++)
+            {
+                cards[i] = Bytes2Card(NuSD.SplitTbl(table, i));
+
+            }
+            return cards;
+        }
+
+        public static byte[] CardIDs2Table(Card[] cards)
+        {
+            int num = cards.Length;
+            byte[] bytesCards = Op.Void();
+            for (int i = 0; i < num; i++)
+            {
+                bytesCards = bytesCards.AddSeg(cards[i].cardID);
+            }
+            return bytesCards;
+        }
+
+        public static Card[] Table2CardIDs(byte[] table)
+        {
+            int num = table.SizeTable();
+            Card[] cards = new Card[num];
+            for (int i = 0; i < num; i++)
+            {
+                byte[] cid = NuSD.SplitTbl(table, i);
+                cards[i] = FindCard(cid);
+            }
+            return cards;
+        }
+
+        public static byte SaveCard(Card card)
+        {
+            return IO.SetStorageWithKeyPath(Card2Bytes(card), Const.preCard, Op.Bytes2String(card.cardID));
+        }
+
+        public static byte[] FindDataCard(byte[] cardID)
+        {
+            return IO.GetStorageWithKeyPath(Const.preCard, Op.Bytes2String(cardID));
+        }
+
+        public static Card FindCard(byte[] cardID) => Bytes2Card(FindDataCard(cardID));
+
+
+        #endregion
+
+        #region User
+        public static byte[] User2Bytes(User user)
+        {
+            if (user == null) return Op.Void();
+            byte[] segCardIds = Op.Void();
+            if (user.cards != null && user.cards.Length > 0)
+            {
+                for (int i = 0; i < user.cards.Length; i++)
+                {
+                    //no cards data
+                    segCardIds = segCardIds.AddSeg(user.cards[i].cardID);
+                }
+            }
+
+            byte[] ret = NuSD.SegString(user.email)
                      .AddSeg(user.pswHash)
                      .AddSeg(user.address)
                      .AddSegStr(user.nickName)
                      .AddSegInt(user.icon)
+                     .AddSegInt(user.score)
                      .AddSegInt(user.serverID)
                      .AddSegInt(user.city)
                      .AddSeg(user.warID)
                      .AddSeg(segCardIds);
+
+            return ret;
+
         }
 
-        public static byte[] UserAndCards2Bytes(User user)
+
+        public static User Bytes2User(byte[] data)
         {
-            byte[] bytesUser = Op.Empty.AddSeg(User2Bytes(user));
-            int num = user.cards.Length;
-
-            byte[] bytesCards = Op.Empty;
-            for (int i = 0; i < num;i++){
-                byte[] cardData = Card2Bytes(user.cards[i]);
-                bytesCards.AddSeg(cardData);
-            }
-            return bytesUser.AddSeg(bytesCards);
-
-        }
-
-        public static User Bytes2User(byte[] data) {
-            if(data.SizeTable() != 8) {
+            if (data.Length == 0)
+            {
                 return null;
             }
-            else{
+            else
+            {
                 User user = new User
                 {
                     email = data.SplitTblStr(0),
                     pswHash = data.SplitTbl(1),
                     address = data.SplitTbl(2),
                     nickName = data.SplitTblStr(3),
-                    icon = data.SplitSegInt(4),
-                    serverID = data.SplitSegInt(5),
-                    city = data.SplitSegInt(6)
+                    icon = data.SplitTblInt(4),
+                    score = data.SplitTblInt(5),
+                    serverID = data.SplitTblInt(6),
+                    city = data.SplitTblInt(7),
+                    warID = data.SplitTbl(8)
                 };
 
 
                 //Also need to read all cards 
-                byte[] cardIds = data.SplitTbl(7);
+                byte[] cardIds = data.SplitTbl(9);
                 int num = cardIds.SizeTable();
 
                 user.cards = new Card[num];
@@ -189,37 +241,137 @@ namespace CarryBattleSC {
                     user.cards[i] = FindCard(cardIds.SplitTbl(i));
 
                 }
-
                 return user;
             }
+        }
 
+        public static byte[] UserCards2Table(User user)
+        {
+            if (user == null) return Op.Void();
+            int num = user.cards.Length;
+            byte[] bytesCards = Op.Void();
+            for (int i = 0; i < num; i++)
+            {
+                byte[] cardData = Card2Bytes(user.cards[i]);
+                bytesCards = bytesCards.AddSeg(cardData);
+            }
+            return bytesCards;
+        }
 
+        public static int NumCardsOfUser(User user)
+        {
+            if (user.cards == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return user.cards.Length;
+            }
         }
 
 
+        public static byte SaveUser(User user)
+        {
+            return IO.SetStorageWithKeyPath(User2Bytes(user), Const.preUser, user.email);
+        }
 
-        public static byte[] FindDataUser(string email) {
+        public static byte[] FindDataUser(string email)
+        {
             return IO.GetStorageWithKeyPath(Const.preUser, email);
         }
 
         public static User FindUser(string email) => Bytes2User(FindDataUser(email));
 
 
-        public static byte SaveUser(User user) {
-            return IO.SetStorageWithKeyPath(User2Bytes(user), Const.preUser, user.email);
+        #endregion
+
+
+        #region City
+        public static byte[] City2Bytes(City city)
+        {
+            if (city == null) return Op.Void();
+
+            byte[] data = NuSD.SegInt(city.serverID)
+                              .AddSegInt(city.cityId)
+                              .AddSegStr(city.ownerID)
+                              .AddSeg(city.siegeID);
+            if (city.ownerID != "")
+            {
+                data = data.AddSeg(CardIDs2Table(city.ownerCards));
+            }
+            return data;
+
+        }
+        public static City Bytes2City(byte[] data)
+        {
+            City city = new City
+            {
+                serverID = data.SplitTblInt(0),
+                cityId = data.SplitTblInt(1),
+                ownerID = data.SplitTblStr(2),
+                siegeID = data.SplitSeg(3)
+            };
+
+            if (city.ownerID != "")
+            {
+                byte[] cardIds = data.SplitSeg(4);
+                city.ownerCards = Table2CardIDs(cardIds);
+            }
+
+            return city;
         }
 
-        public static byte SaveCard(Card card) { 
-            return IO.SetStorageWithKeyPath(Card2Bytes(card), Const.preCard, card.cardID.ToString());
+        public static City CreateCity(BigInteger serverID, BigInteger cityID)
+        {
+            City city = new City
+            {
+                cityId = cityID,
+                serverID = serverID
+            };
+
+
+            return city;
         }
 
-        public static byte[] FindDataCard(byte[] cardID) {
-            return IO.GetStorageWithKeyPath(Const.preCard, Op.Bytes2String(cardID));
+        public static BigInteger GetStatusCity(City city)
+        {
+            if (city.ownerID == "")
+            {
+                return StatusCity.Empty;
+            }
+            else if (city.siegeID == Op.Void())
+            {
+                return StatusCity.Occupied;
+            }
+            else
+            {
+                return StatusCity.Sieging;
+            }
         }
 
-        public static Card FindCard(byte[] cardID) => Bytes2Card(FindDataCard(cardID));
+        public static byte SaveCity(BigInteger serverID, City city)
+        {
+            return IO.SetStorageWithKeyPath(City2Bytes(city)
+                                            , Const.preServer
+                                            , Op.BigInt2String(serverID)
+                                            , Const.preCity
+                                            , Op.BigInt2String(city.cityId)
+                                           );
+        }
 
-        public static byte[] FindDataCity(BigInteger serverId, BigInteger cityId) {
+        //public static byte[] FindDataCity(BigInteger cityID)
+        //{
+        //    return IO.GetStorageWithKeyPath(Const.preCity, cityID.ToString());
+        //}
+
+        public static City FindCity(BigInteger serverID, BigInteger cityID)
+        {
+            return Bytes2City(FindDataCity(serverID, cityID));
+        }
+
+        public static byte[] FindDataCity(BigInteger serverId, BigInteger cityId)
+        {
             return IO.GetStorageWithKeyPath(
                 Const.preServer,
                 Op.BigInt2String(serverId),
@@ -228,74 +380,156 @@ namespace CarryBattleSC {
             );
         }
 
-        public static byte[] FindDataSeige(BigInteger serverId, BigInteger seigeId) {
+        #endregion
+
+        #region Seige
+        public static byte[] Seige2Bytes(Siege war)
+        {
+            return new byte[0];
+        }
+        public static Siege Bytes2Seige(byte[] data)
+        {
+            return new Siege();
+        }
+
+        public static Siege CreateSiege(BigInteger server, City city, User sieger, Card[] cards, BigInteger startHeight)
+        {
+
+            Siege siege = new Siege
+            {
+                serverID = server,
+                cityID = city.cityId,
+                ownerEmail = city.ownerID,
+                siegerEmail = sieger.email,
+                startHeight = startHeight,
+                ownerCards = city.ownerCards,
+                siegeCards = cards
+            };
+            return siege;
+        }
+
+        public static byte[] FindDataSiege(BigInteger serverId, byte[] seigeId)
+        {
             return IO.GetStorageWithKeyPath(
                 Const.preServer,
                 Op.BigInt2String(serverId),
                 Const.preSeige,
-                Op.BigInt2String(seigeId)
+                Op.Bytes2String(seigeId)
+            );
+        }
+
+        public static Siege FindSiege(BigInteger serverId, byte[] seigeId)
+        {
+            return Bytes2Seige(FindDataSiege(serverId, seigeId));
+        }
+
+        public static byte[] FindSiegeDataByCityHistId(BigInteger serverId, BigInteger cityId, BigInteger histId)
+        {
+            byte[] siegeId = IO.GetStorageWithKeyPath(
+                Const.preServer, Op.BigInt2String(serverId),
+                Const.preCity, Op.BigInt2String(cityId),
+                Const.preSeige, Op.BigInt2String(histId)
+            );
+
+            return FindDataSiege(serverId, siegeId);
+        }
+
+        public static BigInteger AddSiegeCityHist(BigInteger serverId, BigInteger cityId, byte[] siegeId)
+        {
+            BigInteger histId = NumCitySiegeHistory(serverId, cityId);
+            IO.SetStorageWithKeyPath(siegeId,
+                Const.preServer, Op.BigInt2String(serverId),
+                Const.preCity, Op.BigInt2String(cityId),
+                Const.preSeige, Op.BigInt2String(histId)
+            );
+
+            IO.SetStorageWithKeyPath(Op.BigInt2Bytes(histId + 1),
+                    Const.preServer, Op.BigInt2String(serverId),
+                    Const.preCity, Op.BigInt2String(cityId),
+                    Const.keyTotSiege
+            );
+            return histId;
+        }
+
+
+        public static byte SaveSiege(Siege siege)
+        {
+            byte[] data = Seige2Bytes(siege);
+            return IO.SetStorageWithKeyPath(data,
+                Const.preServer,
+                Op.BigInt2String(siege.serverID),
+                Const.preCity,
+                Op.BigInt2String(siege.cityID)
+            );
+        }
+
+        public static BigInteger NumCitySiegeHistory(BigInteger serverId, BigInteger cityId)
+        {
+            return Op.Bytes2BigInt(
+                IO.GetStorageWithKeyPath(
+                    Const.preServer, Op.BigInt2String(serverId),
+                    Const.preCity, Op.BigInt2String(cityId),
+                    Const.keyTotSiege
+                )
             );
         }
 
 
-
-        public static int NumCardsOfUser(User user) {
-            return user.cards.Length;
-        }
-
-        /// <summary>
-        /// 给指定用户产生随机初始卡
-        /// 返回实际生成的卡牌数量
-        /// </summary>
-        public static Card[] GenerateRandomCards(User user, int num)
+        public static byte[] FindSiegesByCityHistory(BigInteger serverId, BigInteger cityId, BigInteger numLatest)
         {
-            Card[] cards = new Card[num];
-            int numCardsAlready = user.cards.Length;
-            byte[] dHeight = Op.BigInt2Bytes(Blockchain.GetHeight());
 
-            for (int i = 0; i < num; i++){
-                Card cardResult = new Card();
-                byte[] dEmail = Op.String2Bytes(user.email);
-                byte[] dNum = Op.BigInt2Bytes(i + numCardsAlready);
-
-                cardResult.cardID = Funcs.Rand(Op.JoinByteArray(dEmail,dNum,dHeight),10);
-
-                cardResult.type = Op.Bytes2BigInt(Funcs.Rand(Op.JoinByteArray(dHeight,dNum,dEmail),1));
-                cardResult.lvls = GenerateRandomCardLvs();//这算法你先前端用着吧，区块链上不行的
-
-                cardResult.ownerEmail = user.email;
-                cardResult.warPos = 0;
-                SaveCard(cardResult);
-                cards[i] = cardResult;
+            BigInteger tot = NumCitySiegeHistory(serverId, cityId);
+            BigInteger num = (tot > numLatest) ? numLatest : tot;
+            byte[] ret = Op.Void();
+            for (BigInteger i = 0; i < num; i = i + 1)
+            {
+                BigInteger histId = tot - i - 1;
+                byte[] siegeData = FindSiegeDataByCityHistId(serverId, cityId, histId);
+                ret.AddSeg(siegeData);
             }
-
-            return cards;
+            return ret;
         }
 
-        /// <summary>
-        /// 给指定用户产生随机初始卡,随机等级
-        /// </summary>
-        public static byte[] GenerateRandomCardLvs() {
-            byte[] lvsResult = new byte[(int)Const.numCellsOfCard];
-            for(int i = 0; i < Const.numCellsOfCard; i++) {
-                //is empty or not (30% not empty)
-                bool isEmpty = Funcs.Random(100) < 30;
-                if(!isEmpty) {
-                    int percentageValue = (int)Funcs.Random(Const.fullPercentage);
-                    if(percentageValue < 50) {
-                        lvsResult[i] = 1;
-                    } else if(percentageValue < 70) {
-                        lvsResult[i] = 2;
-                    } else if(percentageValue < 90) {
-                        lvsResult[i] = 3;
-                    } else { 
-                        lvsResult[i] = 4;
-                    }
-                } else {
-                    lvsResult[i] = 0;
-                }
-            }
-            return lvsResult;
+        public static BigInteger NumUserSiegeHistory(User user)
+        {
+            return Op.Bytes2BigInt(
+                IO.GetStorageWithKeyPath(
+                    Const.preUser, user.email,
+                    Const.keyTotSiege
+                )
+            );
         }
+
+
+        #endregion
+
+
+        #region Weather
+        public static byte SaveWeathers(byte[] weathers)
+        {
+            return IO.SetStorageWithKey(Const.preWeather, weathers);
+        }
+
+        public static byte[] ReadWeathers()
+        {
+            return IO.GetStorageWithKey(Const.preWeather);
+        }
+
+        public static BigInteger GetWeather(BigInteger cityID)
+        {
+            return 1;   //TBD
+            //byte[] weathers = ReadWeathers();
+            //if (cityID > Const.numCities)
+            //{
+            //    return 0;
+            //}
+            //else
+            //{
+            //    return Op.Byte2BigInt(weathers[(int)cityID]);
+            //}
+
+        }
+        #endregion
+
     }
 }

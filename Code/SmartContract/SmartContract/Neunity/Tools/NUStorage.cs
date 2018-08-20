@@ -11,7 +11,7 @@ using Neunity.Adapters.Unity;
 namespace Neunity.Tools
 {
     /** The Utilities */
-    public static class IO{
+    public static class NuIO{
         /** The result state of Storage.Put Operation */
         public static class State
         {
@@ -36,11 +36,9 @@ namespace Neunity.Tools
             }
             else
             {
-				//byte[] r = Op.String2Bytes(elements[0]);
 				string r = "";
-                for (int i = 1; i < elements.Length; i++)
+                for (int i = 0; i < elements.Length; i++)
                 {
-					//r = Op.JoinTwoByteArray(r, Op.String2Bytes(elements[i]));
 					r = r + "/" + elements[i];
                 }
 				return Op.String2Bytes(r);

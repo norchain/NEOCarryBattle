@@ -11,32 +11,19 @@ namespace Neunity.Adapters.NEO
 {
 	public static class Op
     {
-        
+        public static byte[] Void() => new byte[0];
 
-		public static BigInteger Bytes2BigInt(byte[] data)
-        {
-            if (data.Length == 0) return 0;
-            return data.AsBigInteger();
-        }
+        public static BigInteger Bytes2BigInt(byte[] data) => data.AsBigInteger();
 
-		public static byte[] BigInt2Bytes(BigInteger bigInteger)
-        {
-            if (bigInteger == 0) return new byte[1] { 0 };
-            return bigInteger.AsByteArray();
-        }
+        public static byte[] BigInt2Bytes(BigInteger bigInteger) => bigInteger.AsByteArray();
 
 
 
-		public static byte[] String2Bytes(String str)
-        {
-            if (str.Length == 0) return "\0".AsByteArray();
-
-            return str.AsByteArray();
-        }
+        public static byte[] String2Bytes(String str) => str.AsByteArray();
 
 		public static String Bytes2String(byte[] data) => data.AsString();
 
-		public static String BigInt2String(BigInteger bigInteger) => bigInteger.AsByteArray().AsString();
+        public static String BigInt2String(BigInteger bigInteger) => bigInteger.AsByteArray().AsString();
 
 		public static bool Bytes2Bool(byte[] data)
         {
@@ -50,9 +37,13 @@ namespace Neunity.Adapters.NEO
             return new byte[1] { 0 };
         }
 
-        public static byte[] Byte2Bytes(byte b){
-            return new byte[1] { b };
-        }
+        public static byte Bytes2Byte(byte[] data) => data[0];
+
+        public static byte[] Byte2Bytes(byte b) => new byte[1] { b };
+
+        public static byte Int2Byte(int i) => (byte)i;
+
+        public static int BigInt2Int(BigInteger i) => (int)i;
 
         public static byte[] SubBytes(byte[] data, int start, int length) => Helper.Range(data, start, length);
 
@@ -86,30 +77,16 @@ namespace Neunity.Adapters.NEO
         }
 
 
-		public static void Log(string str){
-			Runtime.Notify(str);
+        public static void Log(params object[] ba){
+			Runtime.Notify(ba);
 		}
 
-		//private static string keyRandom = "kr";
 
-		//public static byte[] Random()
-   //     {
-			//byte[] ranSeed = Storage.Get(Storage.CurrentContext, keyRandom);
-			//byte[] hash = Blockchain.GetHeader(Blockchain.GetHeight()).Hash;
-			//byte[] ba = Sha256(ranSeed.Concat(hash));
-			//Storage.Put(Storage.CurrentContext, keyRandom, (ranSeed.AsBigInteger() + 1).AsByteArray());
-			//return ba;
-
-        //}
-
-    }
-
-	public static class Funcs
-    {
-
-        public static byte[] Hash(byte[] origin)
+        public static void SetStoragePath(string path)
         {
-            return origin;
+            
         }
+
     }
+
 }
