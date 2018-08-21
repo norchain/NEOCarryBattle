@@ -83,8 +83,8 @@ Neunity同时在进一步集成NEO-Lux RPC，并在与NeoCompiler具体研究建
 
 ## 相关资源
 
-首支[宣传视频](https://youtu.be/PdRJCIeihiY):
-[![Preview In Youtube](http://www.imageurl.ir/images/68301098834895736863.png)](https://youtu.be/PdRJCIeihiY)
+首支[宣传视频](https://www.bilibili.com/video/av29822452/):
+[![Preview In Youtube](http://www.imageurl.ir/images/94223527848154454953.png)](https://www.bilibili.com/video/av29822452/)
 
 试玩地址: [海外](http://www.norchain.io/neounity)  [中国大陆](http://119.23.254.156/neounity/)
 
