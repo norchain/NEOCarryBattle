@@ -1,26 +1,32 @@
 # 《卡莱战纪》：假如你是拜占庭将军
 
+ 
 
-
-
-
->   
 >
->   公元前53年早春，古老的两河平原漫天风雪，峰火遍燃。卡尤斯的大帐里摆着分别来自罗马第一军团三营，第三军团，以及亚美尼亚将军艾西农斯的信函，内容大致都是“巴比伦城防务空虚，速出兵，三日后城下会攻“。亚美尼亚人矫揉谄媚的文字并没能让卡尤斯失去理性——这位罗马将军正陷入极度矛盾的痛苦中。
 >
->   四军合围胜算十足，但是出兵风险实在太大。近来亚美尼亚人行动非常可疑，如果他们趁此机会倒戈，罗马五个营的精锐面对强大的波斯守军及叛军，下场就只有尸骨无存。可是即便如此，卡尤斯也无法拒绝邀约。理由很简单：时间太短，他没有能力把劝阻的信件在会战开始前送达所有人。如果最终在亚美尼亚人没有叛变，而战斗因为他的缺席蒙受巨大损失，那么他就成了叛徒。执政官克拉苏一直怀疑他是庞培党，两天前还曾来信训斥他进军不力，言辞极尽苛责。一旦这种把柄被他抓到，这个驰骋疆场三十载的老兵怕是末日也不远了。
+>   去，是扎进胸口的波斯弯刀；不去，是处决叛徒的罗马绞架，他该怎么办？
 >
->   去，是扎进胸口的弯刀；不去，是处决叛徒的绞架…… 更可怕的是，无论最终如何决策，他都必须在几个小时内作出反应。因为如果决定要去，必须今晚出发才可能及时赶到巴比伦。
+>   ...
 >
->   该怎么办？一片雪花粘在卡尤斯稀疏的胡渣上，又瞬间融化到他那呆滞若石像的身躯里。
+>   公元前53年早春，古老的两河平原漫天风雪，峰火遍燃。罗马将军卡尤斯的案上摆着来自第一军团先锋营，第三军团，以及亚美尼亚将军艾西农斯的信函，内容都请求速出兵会战防务空虚的巴比伦城。这千载难逢的好机会连同亚美尼亚人的谄媚文字都没能让卡尤斯得意忘形，这位经验丰富的老将反而陷入了极度的痛苦和矛盾中。
+>
+>   最近透露亚美尼亚人行径可疑，如果他们趁此机会倒戈帮助波斯守军，罗马五个精锐营面下场只有横尸荒野。可即便道理如此简单，卡尤斯也无法拒绝这战约。因为他没能力在冰天雪地里把拒信送达所有人，他甚至无法确定其他营已经进军到了哪里。假如亚美尼亚人其实没有叛变，那么战斗就会因为他的缺席蒙受巨大损失，他就成了叛徒，被绑去面对暴躁而多疑的执政官克拉苏。
+>
+>   去，是扎进胸口的弯刀；不去，是处决叛徒的绞架…… 更可怕的是，他可能只有几个小时做决策。因为如果决定要去，必须今晚出发才可能及时赶到巴比伦。
+>
+>   该怎么办？嘀嗒、嘀嗒，羊毛毯上晕开一层层水渍，那是死神的沙漏。空气中的碎冰渣拌着大帐里的潮腐气息一同撞进鼻子，隐隐刺痛。东方渐白，厚厚的阴云被大风狂撵着，在冰封的幼发拉底河上飞快的掠过倒影，这无尽旷野里唯一的静动。
 >
 >   ...
 >
 >   "父亲大人，孩儿有一计....." 一个年轻的声音打破了沉默。
 >
->   
+>
 >
 >   —— 帕提亚人史 奥特耶洛纪 卷三
+
+
+
+
 
 
 
@@ -30,17 +36,48 @@
 
 ##  玩法概要
 
-**《卡莱战纪》是一款模拟拜占庭将军问题的卡牌链游，在共识网络上第一次尝试重现那个难以共识的时代**。玩家将在宏大的古欧亚大陆历史背景中扮演独立决策的将军，分配手中的卡牌军队发动或参与攻城战。不同于普通组队PvP游戏，虽然宣战时各方都必须声称自己隶属攻方或守方，但只有在兵临城下时大家才会亮牌知道会战的各方谁是真的盟友，谁是内奸或叛徒。
+**《卡莱战纪》是一款模拟拜占庭将军问题的卡牌链游，在共识网络上第一次尝试重现那个难以共识的时代**。玩家将在宏大的古欧亚大陆历史背景中扮演独立决策的将军，分配手中的卡牌军队发动或参与攻城战。不同于普通组队PvP游戏，虽然宣战时各方都必须声称自己隶属攻方或守方，但只有在兵临城下时大家才会亮牌知道会战的各方谁是真的盟友，谁是内奸叛徒，谁仅仅是放空了消息。
 
 对其他玩家的行为判断当然不是无据可循。作为一款全逻辑上链游戏，所有玩家的参战历史都公开可查，谁是见利忘义的墙头草，谁是最有信誉的坚定战士，谁和谁明显每次都在线下商量好了暗地协作，谁是最狡猾的局势洞察者，都可以通过参考链上数据进行判断和预测。玩家也因此逐渐形成自己的群落，更多的和自己喜欢的人会战，发展出不同的敌友分析及游戏策略来。
+
+**《卡莱战纪》 还是第一款靠去中心化连载小说影响链上逻辑的链游**。每一章的周期里，各分服都可由玩家投票选出最佳章节并上链，作者将获得奖励并成为该阶段游戏世界里的特殊角色“吟游诗人(Bard)”而部分影响该分服逻辑。“吟游诗人” 吟诵自作的这段诗文后还会让世界某局部的气候或地形发生永久变化。
+
+卡莱战纪有宏大的历史背景及新颖的写作题材空间。随着游戏进行会在某分服逐渐出现伟大的链上协作文学作品。
 
 详细玩法说明请移步[玩法介绍](https://github.com/norchain/NEOGameComp/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E7%8E%A9%E6%B3%95.md)。
 
 ## 技术概要
 
-在《卡莱战纪》研发过程中，我们开源了项目[Neunity](https://github.com/norchain/Neunity) ，旨在提高NEO智能合约开发效率。Neunity主要内容包括：NEO智能合约本地离线断点调试及测试用例、C#客户端直接复用合约逻辑、仿HTTP智能合约通信协议Neunity Transfer Protocol(NuTP)、高灵活度类型描述规范及序列化方案NuSD、类URI的Storage管理方案NuIO等。Neunity自开源半月来获得社区关注，也帮助一些参赛队伍改进智能合约研发流程及内容。下一步希望能加深与NEL，NEO-Lux及NeoCompiler的合作，成为促进NEO生态发展的一环。
+###1. Neunity
 
-详细技术特点说明请见：
+在《卡莱战纪》研发过程中，我们顺便研发了项目[Neunity](https://github.com/norchain/Neunity) ，旨在提高NEO智能合约开发效率以实现大规模上链逻辑的工程可实践性。Neunity目前以实现的主要内容包括：
+
+1. NEO智能合约本地离线断点调试及测试用例，以及C#客户端直接复用合约逻辑。[视频教程](https://youtu.be/vTkNzx403p8)
+2. 高灵活度类型描述规范及自定义序列化方案NuSD。
+3. 仿HTTP智能合约通信协议Neunity Transfer Protocol(NuTP)。
+4. 类URI的Storage管理方案NuIO。
+
+Neunity自开源半月来获得社区广泛关注和帮助，为Neunity或《卡莱战纪》贡献代码或创新解决方案的朋友包括：
+
+1. [FabioRick](https://github.com/FabioRick) 及 [Jason L Perry](https://medium.com/@ambethia)：区块内多次获取随机数。并发表文章"[Random Number at Runtime](https://medium.com/@fabiohcardoso/random-number-at-runtime-neo-smartcontract-60c4e6cb0bb1)"
+
+2. [generalkim00](https://github.com/generalkim00) 及[maxpown3r](https://github.com/maxpown3r)：延迟公开链上数据的方法“非对称熵(Asymmentropy)” 。[原理说明](https://github.com/generalkim00/neogame)
+
+3. [gongxiaojing0825](https://github.com/gongxiaojing0825)及[exclusivesunil](https://github.com/exclusivesunil) ： 提供Mac上Neunity的连续集成自动化编译脚本
+
+在此对他们表示深深感谢！
+
+同时，十分高兴看到Neunity也帮助一些本次参赛队伍提速智能合约研发流程，这些项目包括（排名不分先后）：\#140 [NEOPixelBattle](https://github.com/NEOGaming/NEOGames/tree/master/NEOPixelBattle) ,\#78 [BigRedLottery](https://github.com/generalkim00/neogame), \#95 [CarveLoveonBlockchain](https://github.com/exclusivesunil/howmuchyaknowabotme), \#111 [Pirateo](https://github.com/leonhano/SeaExplorer), \#100 [FomoNEO](https://github.com/qw1985/FomoNEO), \#55 [Devourer](https://github.com/norchain/NEOGameDevourer), \#46 [CarryBattle](https://github.com/norchain/NEOCarryBattle) 
+
+Neunity同时在进一步集成NEO-Lux RPC，并在与NeoCompiler具体研究建立API提供本地调试完毕后一键部署neocompiler.io进行测试。下一步也希望能加深包括NEL和BlaCat的钱包接入合作，以及其他CoZ优质项目，成为促进NEO实践更大规模链上逻辑的一环。
+
+
+
+### 2. 应用层
+
+
+
+详细技术特点说明请见：[技术介绍](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%8A%80%E6%9C%AF.md)
 
 ## 相关资源
 
@@ -71,6 +108,6 @@ Email: info.carrybattle@gmail.com
 
 感谢参赛游戏[NEOPixelBattle](https://github.com/NEOGaming/NEOGames/tree/master/NEOPixelBattle)作者[FabioRick](https://github.com/FabioRick) (也是neocompiler开发者)彻夜讨论各种细节实现，以及区块内多随机数算法方案。他的新开源项目[SCTracker](https://github.com/FabioRick/SCTracker) 对我们帮助也不小。
 
-感谢参赛游戏[BigRedLottery](https://github.com/generalkim00/neogame)的作者[generalkim00](https://github.com/generalkim00) 及[maxpown3r](https://github.com/maxpown3r) 分享无敌经典的绝无争议跨区块随机机制Asymmentropy（我帮他翻译为：**非对称熵**。该算法被同时应用到BigRedLottery和CarryBattle里，能完美解决跨区块随机数产生时，由于NEO记账节点少带来可能的作弊争议）。
+感谢参赛游戏[BigRedLottery](https://github.com/generalkim00/neogame)的作者[generalkim00](https://github.com/generalkim00) 及[maxpown3r](https://github.com/maxpown3r) 分享无敌经典的绝无争议跨区块随机机制Asymmentropy（我帮他翻译为：**非对称熵**。该算法被同时应用到BigRedLottery和CarryBattle里，在BigRedLottery里能完美解决跨区块随机数产生时，由于NEO记账节点少带来可能的作弊争议）。
 
 感谢参赛游戏[CarveLoveonBlockchain](https://github.com/exclusivesunil/howmuchyaknowabotme) 的作者[gongxiaojing0825](https://github.com/gongxiaojing0825)及[exclusivesunil](https://github.com/exclusivesunil) 为Neunity提供Mac上的编译脚本。
