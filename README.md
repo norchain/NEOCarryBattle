@@ -46,7 +46,7 @@
 
 详细玩法说明请进一步阅读[玩法设计篇](https://github.com/norchain/NEOGameComp/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E7%8E%A9%E6%B3%95.md)。
 
-讨论玩家在游戏里可获得的娱乐体验请阅读体验篇
+讨论玩家在游戏里可获得的娱乐体验请阅读[体验篇](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E4%BD%93%E9%AA%8C.md)
 
 ## 技术概要
 
