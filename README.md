@@ -44,9 +44,9 @@
 
 卡莱战纪有宏大的历史背景及新颖的写作题材空间。随着游戏进行会在某分服逐渐出现伟大的链上协作文学作品。
 
-详细玩法说明请进一步阅读[设计篇](https://github.com/norchain/NEOGameComp/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E7%8E%A9%E6%B3%95.md)。
+详细玩法说明请进一步阅读[玩法设计篇](https://github.com/norchain/NEOGameComp/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E7%8E%A9%E6%B3%95.md)。
 
-讨论玩家在游戏里可获得的娱乐体验请阅读玩法篇
+讨论玩家在游戏里可获得的娱乐体验请阅读体验篇
 
 ## 技术概要
 
