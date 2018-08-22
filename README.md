@@ -44,7 +44,9 @@
 
 卡莱战纪有宏大的历史背景及新颖的写作题材空间。随着游戏进行会在某分服逐渐出现伟大的链上协作文学作品。
 
-详细玩法说明请移步[玩法介绍](https://github.com/norchain/NEOGameComp/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E7%8E%A9%E6%B3%95.md)。
+详细玩法说明请进一步阅读[设计篇](https://github.com/norchain/NEOGameComp/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E7%8E%A9%E6%B3%95.md)。
+
+讨论玩家在游戏里可获得的娱乐体验请阅读玩法篇
 
 ## 技术概要
 
@@ -61,7 +63,7 @@ Neunity自开源半月来获得社区广泛关注和帮助，为Neunity或《卡
 
 1. [FabioRick](https://github.com/FabioRick) 及 [Jason L Perry](https://medium.com/@ambethia)：区块内多次获取随机数。并发表文章"[Random Number at Runtime](https://medium.com/@fabiohcardoso/random-number-at-runtime-neo-smartcontract-60c4e6cb0bb1)"
 
-2. [generalkim00](https://github.com/generalkim00) 及[maxpown3r](https://github.com/maxpown3r)：延迟公开链上数据的方法“非对称熵(Asymmentropy)” 。[原理说明](https://github.com/generalkim00/neogame)
+2. [generalkim00](https://github.com/generalkim00) 及[maxpown3r](https://github.com/maxpown3r)：为依赖blockhash随机的Dapp提供公平性、防拥堵及避免记账者操控嫌疑的“非对称熵(Asymmentropy)” 。[[原版原理说明](https://github.com/generalkim00/neogame)，[中文简介](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%8A%80%E6%9C%AF.md) (见第二章)]
 
 3. [gongxiaojing0825](https://github.com/gongxiaojing0825)及[exclusivesunil](https://github.com/exclusivesunil) ： 提供Mac上Neunity的连续集成自动化编译脚本
 
@@ -110,6 +112,6 @@ Email: info.carrybattle@gmail.com
 
 感谢参赛游戏[NEOPixelBattle](https://github.com/NEOGaming/NEOGames/tree/master/NEOPixelBattle)作者[FabioRick](https://github.com/FabioRick) (也是neocompiler开发者)彻夜讨论各种细节实现，以及区块内多随机数算法方案。他的新开源项目[SCTracker](https://github.com/FabioRick/SCTracker) 对我们帮助也不小。
 
-感谢参赛游戏[BigRedLottery](https://github.com/generalkim00/neogame)的作者[generalkim00](https://github.com/generalkim00) 及[maxpown3r](https://github.com/maxpown3r) 分享无敌经典的绝无争议跨区块随机机制Asymmentropy（我帮他翻译为：**非对称熵**。该算法被同时应用到BigRedLottery和CarryBattle里，在BigRedLottery里能完美解决跨区块随机数产生时，由于NEO记账节点少带来可能的作弊争议）。
+感谢参赛游戏[BigRedLottery](https://github.com/generalkim00/neogame)的作者[generalkim00](https://github.com/generalkim00) 及[maxpown3r](https://github.com/maxpown3r) 分享无敌经典的绝无争议跨区块随机机制Asymmentropy（我帮他翻译为：**非对称熵**。该算法被同时应用到BigRedLottery和CarryBattle里，在BigRedLottery里能完美解决跨区块随机数产生时，由于NEO记账节点少带来可能的争议）。
 
 感谢参赛游戏[CarveLoveonBlockchain](https://github.com/exclusivesunil/howmuchyaknowabotme) 的作者[gongxiaojing0825](https://github.com/gongxiaojing0825)及[exclusivesunil](https://github.com/exclusivesunil) 为Neunity提供Mac上的编译脚本。
