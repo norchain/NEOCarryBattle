@@ -52,7 +52,7 @@
 
 ### 1. 引擎层
 
-在《卡莱战纪》研发过程中，我们顺便研发了项目[Neunity](https://github.com/norchain/Neunity) ，旨在提高NEO智能合约开发效率以实现大规模上链逻辑的工程可实践性。Neunity目前以实现的主要内容包括：
+借助在《卡莱战纪》的机会，我们开发并开源了项目[Neunity](https://github.com/norchain/Neunity) (MIT)，旨在提高NEO智能合约开发效率以实现大规模上链逻辑的工程可实践性。Neunity目前以实现的主要内容包括：
 
 1. NEO智能合约本地离线断点调试及测试用例，以及C#客户端直接复用合约逻辑。[视频教程](https://youtu.be/vTkNzx403p8)
 2. 高灵活度类型描述规范及自定义序列化方案NuSD。
