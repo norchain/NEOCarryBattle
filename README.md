@@ -2,6 +2,12 @@
 
  
 
+[![Preview In Bilibili](http://www.imageurl.ir/images/94223527848154454953.png)](https://www.bilibili.com/video/av29822452/)
+
+试玩地址: [海外](http://www.norchain.io/neounity)  [中国大陆](http://119.23.254.156/neounity/)
+
+
+
 >   ...
 >
 >   去，是刺进胸口的波斯弯刀；不去，是处决叛徒的罗马绞架。他该怎么办？
@@ -29,9 +35,6 @@
 
 
 上篇讲述的是改变人类历史20大战役之一：卡莱战役里的片段，也展现了一个典型的拜占庭将军问题。假如你是拜占庭将军，该如何在有限的通信条件和共识方法下辨别真伪敌友，用最佳的分配调度来获得胜利？这个难题在今天有区块链技术解决，但在两千年前历史背景下，将军们的一切决断都必须基于超人的嗅觉、判断力和勇气。你，能做到么？
-[![Preview In Bilibili](http://www.imageurl.ir/images/94223527848154454953.png)](https://www.bilibili.com/video/av29822452/)
-
-**试玩地址**: [海外](http://www.norchain.io/neounity)  [中国大陆](http://119.23.254.156/neounity/)
 
 
 
@@ -96,6 +99,8 @@ Neunity同时在进一步集成NEO-Lux RPC，并在与neocompiler.io讨论建立
 详细技术特点说明请见：[技术介绍](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%8A%80%E6%9C%AF.md)
 
 ## 相关资源
+
+
 
 即时通信社区: [Discord](<https://discord.gg/pKQyyrP> )
 
