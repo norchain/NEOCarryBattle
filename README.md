@@ -8,7 +8,7 @@
 >
 >   公元前53年早春，古老的两河平原漫天风雪，峰火遍燃。罗马将军卡尤斯的案上摆着来自第一军团先锋营，第三军团，以及亚美尼亚将军艾西农斯的信函，内容都请求速出兵会战防务空虚的巴比伦城。这千载难逢的好机会连同亚美尼亚人的谄媚文字都没能让卡尤斯得意忘形——戎马三十载的老将此时反而深陷入痛苦与矛盾之中。
 >
->   亚美尼亚人自去年秋起就开始行径可疑，如果他们趁此机会倒戈波斯守军，罗马五个精锐营下场只有横尸荒野 —— 道理如此直白，可是卡尤斯却不能拒绝出兵。因为他没法在这糟糕的天气里把拒信送达所有其他营，他甚至无法确定他们已经到了哪里。假如亚美尼亚人最终没有叛变，那么战斗就一定会因他的缺席蒙受巨大损失，他就成了叛徒，被绑去见残忍而多疑的执政官克拉苏。
+>   亚美尼亚人自去年秋起就开始行径可疑，如果他们趁此机会倒戈波斯守军，罗马五个精锐营下场只有横尸荒野 —— 道理如此直白，可是卡尤斯却不能拒绝出兵。因为他没法在这糟糕的天气里把拒信送达所有其他营，他甚至无法确定他们已经到了哪里。假如战斗在亚美尼亚人没有叛变情况下因他的缺席蒙受巨大损失，他就成了叛徒…… 在残忍而多疑的执政官克拉苏面前跪下的叛徒。
 >
 >   去，是扎进胸口的弯刀；不去，是处决叛徒的绞架…… 更可怕的是，他可能只剩几个小时做决策。否则即使决定出发也无法按时赶到巴比伦了。
 >
@@ -32,13 +32,13 @@
 
 
 
-此篇概括叙述《卡莱战纪》的玩法和技术特点并鸣谢对项目有帮助的人。其他内容请参见：
+此篇概括叙述《卡莱战纪》的玩法和技术特点， 并鸣谢对项目有帮助的朋友。其他内容请参见：
 
 [核心玩法:在拜占庭网络上模拟拜赞庭将军问题](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E8%AE%BE%E8%AE%A1.md)
 
 [软分服: 大规模链游解决方案](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%88%86%E6%9C%8D.md)
 
-[用去中心化小说影响游戏，检验人性](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%B0%8F%E8%AF%B4.md)
+[用去中心化小说反影响游戏逻辑，检验人性](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%B0%8F%E8%AF%B4.md)
 
 [技术: Neunity框架，非对称熵，以及其他](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%8A%80%E6%9C%AF.md)
 
@@ -54,20 +54,20 @@
 
 拜占庭将军问题背后的故事是：几个将军想协同攻城，必须有足够人共同参与才能成功，可是相互通信又不便。那么协同攻城的邀约是否可信？是否足够多盟友出兵？畏缩退兵是否会导致盟友的损失？在《卡莱战纪》里，你只有兵临城下时才能确知答案。
 
-**《卡莱战纪》 还是第一款靠去中心化连载小说影响链上逻辑的链游**。每一章的周期里，各分服都可由玩家投票选出最佳章节并上链，作者将获得奖励并成为该阶段游戏世界里的特殊角色“吟游诗人”而影响该分服逻辑。你将在[这篇文章](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%B0%8F%E8%AF%B4.md)中了解到具体的设计将如何使得《卡莱战纪》成为一场考验人性的实验。另外卡莱战纪有宏大的历史背景及新颖的写作题材空间，期望随着游戏进行会在某分服逐渐出现伟大的链上公投协作文学作品。
+**《卡莱战纪》 还是第一款靠去中心化连载小说影响链上逻辑的链游**。每一章的周期里，各分服都可由玩家投票选出最佳章节并上链，作者将获得奖励并成为该阶段游戏世界里的特殊角色“吟游诗人”而影响该分服逻辑。你将在[这篇文章](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%B0%8F%E8%AF%B4.md)中了解到具体的设计将如何使得《卡莱战纪》成为一场考验人性的实验。另外卡莱战纪有宏大的全球性历史背景及新颖的写作题材空间，相信随着游戏进行会在某分服逐渐出现伟大的链上公投协作文学作品。
 
-
+ 
 
 ## 技术概要
 
 ### 1. 引擎层
 
-借助在《卡莱战纪》的机会，我们开发并开源了项目[Neunity](https://github.com/norchain/Neunity) (MIT)，旨在提高NEO智能合约开发效率以实现大规模上链逻辑的工程可实践性。Neunity目前以实现的主要内容包括：
+借助在《卡莱战纪》的机会，我们开发并开源了项目[Neunity](https://github.com/norchain/Neunity) (MIT)，旨在提高NEO智能合约开发效率，以实现大规模上链逻辑的工程可实践性。Neunity目前实现的主要内容包括：
 
 1. [完成]研发适配器以实现NEO智能合约本地离线断点调试及测试用例，以及C#客户端直接复用合约逻辑。[视频教程](https://youtu.be/vTkNzx403p8)
-2. [完成]高灵活度类型描述规范及自定义序列化方案NuSD。
-3. [完成]仿HTTP智能合约通信协议Neunity Transfer Protocol(NuTP)。
-4. [完成]类URI的Storage管理方案NuIO。
+2. [完成]灵活的类型描述规范及自定义序列化方案[NuSD](https://github.com/norchain/Neunity/blob/master/NeunityBytesSeralization.md)。
+3. [完成]仿HTTP合约通信协议Neunity Transfer Protocol([NuTP](https://github.com/norchain/Neunity/blob/master/Neunity/Neunity/Tools/NUTransferProtocol.cs))。
+4. [完成]类URI的Storage管理方案[NuIO](https://github.com/norchain/Neunity/blob/master/NeunityStorageManagement.md)。
 
 Neunity自开源半月来获得社区广泛关注和帮助，为Neunity或《卡莱战纪》贡献代码或创新解决方案的朋友包括：
 
@@ -85,7 +85,7 @@ Neunity同时在进一步集成NEO-Lux RPC，并在与neocompiler.io讨论建立
 
 ### 2. 应用层
 
-* 为了实现“在共识网络上重现那个难以共识的时代”， 为了平衡链游PvP因信息公开性造成的后发优势，我们应用前文所述的非对称熵方法在非匿名公链上实现了**制造玩家真实行动和此行动传播到其他玩家的时间差**（[简介](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%8A%80%E6%9C%AF.md) 2.2节)。
+* 为了实现“在共识网络上重现那个难以共识的时代”目标， 也为了平衡链游PvP因信息公开性造成的后发优势，我们应用前文所述的非对称熵方法在非匿名公链上实现了**制造玩家真实行动和此行动传播到其他玩家的时间差**（[简介](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%8A%80%E6%9C%AF.md) 2.2节)。
 * 卡莱战役是一款逻辑上链游戏，玩家无需依赖中心化服务器便能体验完整的游戏流程（甚至无需客户端）。  全链游保证玩家资产不仅永远不会丢失，而且永远能有用或交易给想继续用的人。
 * 卡莱战役基于Unity游戏引擎开发，支持全平台移植。
 * 为了应对区块链一些两面性的特质，以及扩展逻辑和数据后可能发生的很多问题，我们设计了诸如软分服、信息补贴等。
@@ -121,6 +121,9 @@ Email: info.carrybattle@gmail.com
 
 感谢参赛游戏[NEOPixelBattle](https://github.com/NEOGaming/NEOGames/tree/master/NEOPixelBattle)作者[FabioRick](https://github.com/FabioRick) (也是neocompiler开发者)彻夜讨论各种细节实现，以及区块内多随机数算法方案。他的新开源项目[SCTracker](https://github.com/FabioRick/SCTracker) 对我们帮助也不小。
 
-感谢参赛游戏[BigRedLottery](https://github.com/generalkim00/neogame)的作者[generalkim00](https://github.com/generalkim00) 及[maxpown3r](https://github.com/maxpown3r) 分享无敌经典的绝无争议跨区块随机机制Asymmentropy（我帮他翻译为：**非对称熵**。该算法被同时应用到BigRedLottery和CarryBattle里，在BigRedLottery里能完美解决跨区块随机数产生时，由于NEO记账节点少带来可能的争议）。
+感谢参赛游戏[BigRedLottery](https://github.com/generalkim00/neogame)的作者[generalkim00](https://github.com/generalkim00) 及[maxpown3r](https://github.com/maxpown3r) 分享无敌经典的绝无争议跨区块随机机制Asymmentropy（我帮他翻译为：**非对称熵**。该算法被同时应用到BigRedLottery和CarryBattle里，在BigRedLottery里能完美解决跨区块随机数产生时可能带来可能的争议）。
 
 感谢参赛游戏[CarveLoveonBlockchain](https://github.com/exclusivesunil/howmuchyaknowabotme) 的作者[gongxiaojing0825](https://github.com/gongxiaojing0825)及[exclusivesunil](https://github.com/exclusivesunil) 为Neunity提供Mac上的编译脚本。
+
+
+
