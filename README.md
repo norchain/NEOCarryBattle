@@ -1,6 +1,7 @@
 # Carrhae Battle
 
 Chinese Version: [HERE](https://github.com/norchain/NEOCarryBattle/blob/master/README_CN.md)
+
 Gameplay Demo: [HERE](http://www.norchain.io/neounity) 
  
 
