@@ -1,42 +1,42 @@
-# CarryBattle
+# 《卡莱战纪》：假如你是拜占庭将军
 
  
 
 [![Preview In Bilibili](http://www.imageurl.ir/images/94223527848154454953.png)](https://www.bilibili.com/video/av29822452/)
 
-Demo: [International](http://www.norchain.io/neounity)  [ChinaMainland](http://119.23.254.156/neounity/)
+试玩地址: [海外](http://www.norchain.io/neounity)  [中国大陆](http://119.23.254.156/neounity/)
 
 
 
-> 53BC, Eurasia, the war between Roman Republic and Parthian Empire come to the decisive period.  The powerful Roman encountered the toughest defence and could not make a move near the town of Carrhae. However they had another plot. 
->
-> The poetry-loving Persians in Carrhae had an obscure custom. The bards would play their new chapter of epos in turns during the ceremonies. The townee and visitors voted the most beautiful one as the tribute to the Gods, which would induce luck, wealth or disaster to different people, cities and countries. Althrough the impacts were predictable, townees insisted to vote the best by their hearts even if the disaster would arrive on themselves.
->
-> But this time, Romans attempted to manipulate the ceremony, for the result of the Battle of Carrhae...
+> 公元前后的欧亚大陆，罗马共和国与安息帝国在广袤的两河平原角逐，战火遍野。在名城卡莱附近胶着时，罗马人找到了极可能为他们取得胜利的机会：原来热爱音乐与诗的安息人民会选举出最优秀的吟游诗人在祭祀上吟诵反映时事的诗篇，如果诗篇的内容正好符合某种神秘的模式，某些地方或人物就会被上天降临的甘露或闪电带来丰收或灾难。罗马人准备通过各种途径选上自己安插的吟游诗人而增加战争胜利的筹码... 
 
 
 
-This article discribes the the gameplay and technology features of *CarrhaeBattle*, and credit those who helped this project. For other content please refer to (In Chinese Language and will translate soon):
 
- [Core Gameplay: Simulate Byzantine General Problem on a BFT network](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%A0%B8%E5%BF%83%E7%8E%A9%E6%B3%95.md)
 
-[Soft Server: The solution of mutiple-server blockchain games ](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%88%86%E6%9C%8D.md)
 
-[Vote for the next chapter epos:  In the name of profit or beauty?](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%B0%8F%E8%AF%B4.md)
 
-[Technology: Neunity，Asymmentropy and others](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%8A%80%E6%9C%AF.md)
+此篇概括叙述《卡莱战纪》的玩法和技术特点， 并鸣谢对项目有帮助的朋友。其他内容请参见：
+
+[核心玩法:在拜占庭网络上模拟拜赞庭将军问题](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%A0%B8%E5%BF%83%E7%8E%A9%E6%B3%95.md)
+
+[去中心化小说对世界影响](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%B0%8F%E8%AF%B4.md)
+
+[软分服: 大规模链游解决方案](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%88%86%E6%9C%8D.md)
+
+
+
+[技术: Neunity框架，非对称熵，以及其他](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%8A%80%E6%9C%AF.md)
+
+
 
 
 
 ![Logo](pics/Logo.jpg)
 
-##  Gameplay Brief
+##  玩法概要
 
-Carrhae Battle is a blockchain card game to simulate Byzantine General Problem: The first time to reproduce the famous trust dilemma. The players will act the generals in the ancient Eurasia, deploy the cards to the trigger or participate in the seiges.
-
-The story behind Byzantine General Problem is: Several allied generals can win the seige only if enough forces eventually grouped. But since the communication was not reliable, each one of them had to think of the authenticity of the 
-
-《卡莱战纪》是一款模拟拜占庭将军问题的卡牌链游，在共识网络上第一次尝试重现那个难以共识的时代**。玩家将在宏大的古欧亚大陆历史背景中扮演独立决策的将军，分配手中的卡牌军队发动或参与攻城战。
+**《卡莱战纪》是一款模拟拜占庭将军问题的卡牌链游，在共识网络上第一次尝试重现那个难以共识的时代**。玩家将在宏大的古欧亚大陆历史背景中扮演独立决策的将军，分配手中的卡牌军队发动或参与攻城战。
 
 拜占庭将军问题背后的故事是：几个将军想协同攻城，必须有足够人共同参与才能成功，可是相互通信又不便。那么协同攻城的邀约是否可信？是否足够多盟友出兵？畏缩退兵是否会导致盟友的损失？在《卡莱战纪》里，你只有兵临城下时才能确知答案。
 
