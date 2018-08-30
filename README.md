@@ -1,10 +1,14 @@
 # Carrhae Battle
 
+Chinese Version: [HERE](https://github.com/norchain/NEOCarryBattle/blob/master/README_CN.md)
+
  
 
 [![Preview In Bilibili](http://www.imageurl.ir/images/94223527848154454953.png)](https://www.bilibili.com/video/av29822452/)
 
-Demo: [International](http://www.norchain.io/neounity)  [ChinaMainland](http://119.23.254.156/neounity/)
+
+
+Demo: [International](http://www.norchain.io/neounity) 
 
 
 
