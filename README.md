@@ -38,9 +38,9 @@ This article discribes the the gameplay and technology features of *CarrhaeBattl
 
 Carrhae Battle is a blockchain card game to simulate the famous trust dilemma Byzantine General Problem. The players act the generals in the ancient Eurasia, deploy the cards to the trigger or participate in the sieges for the trophies.
 
-The story behind Byzantine General Problem is: Several allied generals could win the siege only if enough forces eventually joined. But since the communication was not reliable, each one of them had to think of the authenticity and the latency of the messages they received. *Carrhae Battle* uses Asymmentropy to temporary "cloak" the users' real actions on blockchain to simulate this process, so people could only analyse the coming force is on which side or just a smokescreen when it's matching. (Note: simulating BGP is optional when players create a new server. It will come to be conventional card siege game if this option is off. More details please see [Soft Server](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%88%86%E6%9C%8D.md)).
+The story behind Byzantine General Problem is: Several allied generals could win the siege only if enough forces eventually joined. But due to the unreliable communication, each one of them had to think of the authenticity and the latency of the messages they received before issuing an order. *Carrhae Battle* uses Asymmentropy to temporary "cloak" the players' real actions on blockchain to simulate this process, so players could only know the coming army's real stand (or just a smokescreen) before the siege start. (Note: simulating BGP is optional when players create a new server. It will downgrade to  conventional card siege game if this option is off. More details please see [Soft Server](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%88%86%E6%9C%8D.md)).
 
-Carrhae Battle is also the first blockchain game **to use decentralized voted epos to impact the game world**. In every chapter's cycle, the players in each server vote the best next chapter. The hash result of the chapter decides the positive or negative impacts on the cities and players respectively. The bard as the author of the voted chapter would be awarded by the voting tokens and be granted some superpower during this cycle as well. By reading the epos, we'll know the majority players of such server are art sponsors, the self-sacrificers, or the power chasers. (Note: No topic restriction for the "epos") 
+Carrhae Battle is also the first blockchain game **to empower the decentralized voted epos to impact the game world**. In every chapter's cycle, the players in each server vote the best next chapter. The hash result of the chapter decides the positive or negative impacts on the cities and players respectively. The bard as the author of the voted chapter would be awarded with the voting tokens and be granted some superpower during this cycle as well. By reading the epos, we'll know which servers have the majority of the art sponsors, the self-sacrificers, or the power chasers. (Note: No topic restriction for the "epos") 
 
  
 
@@ -50,14 +50,14 @@ Carrhae Battle is also the first blockchain game **to use decentralized voted ep
 
 ### 1. Engine Layer
 
-With the opportunity of developing the NEO version of *Carrhae Battle*, we developed and open sourced the project [Neunity](https://github.com/norchain/Neunity) (MIT), in order to help increase the development efficiency of developing large scale NEO smart contracts. The features Neunity realized include：
+With the opportunity of developing the NEO version of *Carrhae Battle*, we developed and open sourced the project [Neunity](https://github.com/norchain/Neunity) (MIT), in order to help increase the efficiency of developing large scale NEO smart contracts. The features Neunity realized include：
 
 1. [Finished] The Adapter layer to realize NEO smart contract local offline breakpoint debug and test cases, while share the SC logic (class definitions and algorithms) with C# client. [Video Tutorial](https://youtu.be/vTkNzx403p8)
 2. [Finished] Flexible class serialization method [NuSD](https://github.com/norchain/Neunity/blob/master/NeunityBytesSeralization.md). 
 3. [Finished] HTTP-like SC invocation protocol: Neunity Transfer Protocol([NuTP](https://github.com/norchain/Neunity/blob/master/Neunity/Neunity/Tools/NUTransferProtocol.cs)).
 4. [Finished] URI-like Storage management method [NuIO](https://github.com/norchain/Neunity/blob/master/NeunityStorageManagement.md).
 
-Thanks the following people for helping Carrhae Battle and Neunity with code and innovative solutions:
+Thanks the people for helping Carrhae Battle and Neunity with code and innovative solutions:
 
 1. [generalkim00](https://github.com/generalkim00) and [maxpown3r](https://github.com/maxpown3r): The idea of "Asymmentropy" to keep competitive Dapps fair and jam-proof. Asymmentropy can also help bookkeepers to avoid transaction-reversing suspicion in competitive Dapps.  [[Introduction](https://github.com/generalkim00/neogame)，[Chinese Version](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%8A%80%E6%9C%AF.md) (Chapter 2.2)]
 2. [FabioRick](https://github.com/FabioRick) and  [Jason L Perry](https://medium.com/@ambethia)：How to generate multiple random numbers in one block. Also published the article "[Random Number at Runtime](https://medium.com/@fabiohcardoso/random-number-at-runtime-neo-smartcontract-60c4e6cb0bb1)"
