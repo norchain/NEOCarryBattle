@@ -1,6 +1,12 @@
 # 《卡莱战纪》：假如你是拜占庭将军
 
- 
+ **卡莱战纪**获得NEO第一届区块链游戏开发大赛“技术效果奖”。
+
+![award](pics/award.jpeg)
+
+
+
+
 
 [![Preview In Bilibili](http://www.imageurl.ir/images/94223527848154454953.png)](https://www.bilibili.com/video/av29822452/)
 
