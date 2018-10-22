@@ -1,7 +1,15 @@
-# Carrhae Battle
+# Carry Battle
 
 
- 
+
+**Carray Battle** won the "Technical Effects Award" in NEO's 1st Blockchain Game Development Competition.
+
+![award](pics/award.jpeg)
+
+
+
+
+
 
 [![Preview In Bilibili](http://www.imageurl.ir/images/94223527848154454953.png)](https://www.bilibili.com/video/av29822452/)
 
