@@ -8,13 +8,13 @@
 
 
 
-[![Preview In Bilibili](http://www.imageurl.ir/images/94223527848154454953.png)](https://www.bilibili.com/video/av29822452/)
+[![Preview In Bilibili](http://www.imageurl.ir/images/94223527848154454953.png)](https://www.bilibili.com/video/BV1aT4y1D7jr/)
 
 试玩地址: [海外](http://www.norchain.io/neounity)  [中国大陆](http://119.23.254.156/neounity/)
 
 
 
-> 公元前后的欧亚大陆，罗马共和国与安息帝国在广袤的两河平原角逐，战火遍野。在名城卡莱附近胶着时，罗马人找到了极可能为他们取得胜利的机会：原来热爱音乐与诗的安息人民会选举出最优秀的吟游诗人在祭祀上吟诵反映时事的诗篇，如果诗篇的内容正好符合某种神秘的模式，某些地方或人物就会被上天降临的甘露或闪电带来丰收或灾难。罗马人准备通过各种途径选上自己安插的吟游诗人而增加战争胜利的筹码... 
+> 公元前后的欧亚大陆，罗马共和国与安息帝国在广袤的两河平原角逐，战火遍野。在名城卡莱附近胶着时，罗马人找到了极可能为他们取得胜利的机会：原来热爱音乐与诗的安息人民会选举出最优秀的吟游诗人在祭祀上吟诵反映时事的诗篇，如果诗篇的内容正好符合某种神秘的模式，某些地方或人物就会被上天降临的甘露或闪电带来丰收或灾难。罗马人准备通过各种途径选上自己安插的吟游诗人而增加战争胜利的筹码...
 
 
 
@@ -48,7 +48,7 @@
 
 **《卡莱战纪》 还是第一款靠去中心化连载小说影响链上逻辑的链游**。每一章的周期里，各分服都可由玩家投票选出最佳章节并上链，作者将获得奖励并成为该阶段游戏世界里的特殊角色“吟游诗人”而影响该分服逻辑。你将在[这篇文章](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%B0%8F%E8%AF%B4.md)中了解到具体的设计将如何使得《卡莱战纪》成为一场考验人性的实验。另外卡莱战纪有宏大的全球性历史背景及新颖的写作题材空间，相信随着游戏进行会在某分服逐渐出现伟大的链上公投协作文学作品。
 
- 
+
 
 ## 技术概要
 
@@ -69,7 +69,7 @@ Neunity自开源半月来获得社区广泛关注和帮助，为Neunity或《卡
 
 在此对他们表示深深感谢！
 
-同时，十分高兴看到Neunity能帮助本次参赛一些队伍提速智能合约研发流程，这些项目包括（排名不分先后）：\#140 [NEOPixelBattle](https://github.com/NEOGaming/NEOGames/tree/master/NEOPixelBattle) ,\#78 [BigRedLottery](https://github.com/generalkim00/neogame), \#95 [CarveLoveonBlockchain](https://github.com/exclusivesunil/howmuchyaknowabotme), \#111 [Pirateo](https://github.com/leonhano/SeaExplorer), \#100 [FomoNEO](https://github.com/qw1985/FomoNEO), \#55 [Devourer](https://github.com/norchain/NEOGameDevourer), \#46 [CarryBattle](https://github.com/norchain/NEOCarryBattle) 
+同时，十分高兴看到Neunity能帮助本次参赛一些队伍提速智能合约研发流程，这些项目包括（排名不分先后）：\#140 [NEOPixelBattle](https://github.com/NEOGaming/NEOGames/tree/master/NEOPixelBattle) ,\#78 [BigRedLottery](https://github.com/generalkim00/neogame), \#95 [CarveLoveonBlockchain](https://github.com/exclusivesunil/howmuchyaknowabotme), \#111 [Pirateo](https://github.com/leonhano/SeaExplorer), \#100 [FomoNEO](https://github.com/qw1985/FomoNEO), \#55 [Devourer](https://github.com/norchain/NEOGameDevourer), \#46 [CarryBattle](https://github.com/norchain/NEOCarryBattle)
 
 Neunity同时在进一步集成NEO-Lux RPC，并在与neocompiler.io讨论建立API，以提供本地调试完毕后一键部署neocompiler.io进行测试的连续集成工具链。下一步也十分希望能加深与包括NEL和BlaCat的钱包在内的其他CoZ优质项目的合作，为促进NEO实践大规模系统化链上逻辑做贡献。
 

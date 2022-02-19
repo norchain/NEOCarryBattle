@@ -13,16 +13,16 @@
 
 
 
-[![Preview In Bilibili](http://www.imageurl.ir/images/94223527848154454953.png)](https://www.bilibili.com/video/av29822452/)
+[![Preview In Bilibili](http://www.imageurl.ir/images/94223527848154454953.png)](https://www.bilibili.com/video/BV1aT4y1D7jr/)
 
 
 Chinese Version: [HERE](https://github.com/norchain/NEOCarryBattle/blob/master/README_CN.md)
 
-Gameplay Demo: [HERE](http://www.norchain.io/neounity) 
+Gameplay Demo: [HERE](http://www.norchain.io/neounity)
 
 
 
-> 53BC, Eurasia, the war between Roman Republic and Parthian Empire come to the decisive period.  The powerful Roman encountered the toughest defence and could not make a move near the town of Carrhae. However they had another plot. 
+> 53BC, Eurasia, the war between Roman Republic and Parthian Empire come to the decisive period.  The powerful Roman encountered the toughest defence and could not make a move near the town of Carrhae. However they had another plot.
 >
 > The poetry-loving Persians in Carrhae had an obscure custom. The bards would play their new chapter of epos in turns during the ceremonies. The townees and visitors voted the most beautiful one as the tribute to the Gods, which would induce luck, wealth or disaster to different people, cities and countries. Althrough the impacts were predictable, townees insisted to vote the best by their hearts even if the disaster would arrive on themselves.
 >
@@ -50,9 +50,9 @@ Carrhae Battle is a blockchain card game to simulate the famous trust dilemma By
 
 The story behind Byzantine General Problem is: Several allied generals could win the siege only if enough forces eventually joined. But due to the unreliable communication, each one of them had to think of the authenticity and the latency of the messages they received before issuing an order. *Carrhae Battle* uses Asymmentropy to temporary "cloak" the players' real actions on blockchain to simulate this process, so players could only know the coming army's real stand (or just a smokescreen) before the siege start. (Note: simulating BGP is optional when players create a new server. It will downgrade to  conventional card siege game if this option is off. More details please see [Soft Server](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%88%86%E6%9C%8D.md)).
 
-Carrhae Battle is also the first blockchain game **to empower the decentralized voted epos to impact the game world**. In every chapter's cycle, the players in each server vote the best next chapter. The hash result of the chapter decides the positive or negative impacts on the cities and players respectively. The bard as the author of the voted chapter would be awarded with the voting tokens and be granted some superpower during this cycle as well. By reading the epos, we'll know which servers have the majority of the art sponsors, the self-sacrificers, or the power chasers. (Note: No topic restriction for the "epos") 
+Carrhae Battle is also the first blockchain game **to empower the decentralized voted epos to impact the game world**. In every chapter's cycle, the players in each server vote the best next chapter. The hash result of the chapter decides the positive or negative impacts on the cities and players respectively. The bard as the author of the voted chapter would be awarded with the voting tokens and be granted some superpower during this cycle as well. By reading the epos, we'll know which servers have the majority of the art sponsors, the self-sacrificers, or the power chasers. (Note: No topic restriction for the "epos")
 
- 
+
 
 
 
@@ -63,7 +63,7 @@ Carrhae Battle is also the first blockchain game **to empower the decentralized 
 With the opportunity of developing the NEO version of *Carrhae Battle*, we developed and open sourced the project [Neunity](https://github.com/norchain/Neunity) (MIT), in order to help increase the efficiency of developing large scale NEO smart contracts. The features Neunity realized include：
 
 1. [Finished] The Adapter layer to realize NEO smart contract local offline breakpoint debug and test cases, while share the SC logic (class definitions and algorithms) with C# client. [Video Tutorial](https://youtu.be/vTkNzx403p8)
-2. [Finished] Flexible class serialization method [NuSD](https://github.com/norchain/Neunity/blob/master/NeunityBytesSeralization.md). 
+2. [Finished] Flexible class serialization method [NuSD](https://github.com/norchain/Neunity/blob/master/NeunityBytesSeralization.md).
 3. [Finished] HTTP-like SC invocation protocol: Neunity Transfer Protocol([NuTP](https://github.com/norchain/Neunity/blob/master/Neunity/Neunity/Tools/NUTransferProtocol.cs)).
 4. [Finished] URI-like Storage management method [NuIO](https://github.com/norchain/Neunity/blob/master/NeunityStorageManagement.md).
 
@@ -75,9 +75,9 @@ Thanks the people for helping Carrhae Battle and Neunity with code and innovativ
 
 Thank you guys very much.
 
-At the same time, very glad to see Neunity can help other teams to increase their development efficiency during this competition. Including: #140 [NEOPixelBattle](https://github.com/NEOGaming/NEOGames/tree/master/NEOPixelBattle) ,\#78 [BigRedLottery](https://github.com/generalkim00/neogame), \#95 [CarveLoveonBlockchain](https://github.com/exclusivesunil/howmuchyaknowabotme), \#111 [Pirateo](https://github.com/leonhano/SeaExplorer), \#100 [FomoNEO](https://github.com/qw1985/FomoNEO), \#55 [Devourer](https://github.com/norchain/NEOGameDevourer), \#46 [CarryBattle](https://github.com/norchain/NEOCarryBattle) 
+At the same time, very glad to see Neunity can help other teams to increase their development efficiency during this competition. Including: #140 [NEOPixelBattle](https://github.com/NEOGaming/NEOGames/tree/master/NEOPixelBattle) ,\#78 [BigRedLottery](https://github.com/generalkim00/neogame), \#95 [CarveLoveonBlockchain](https://github.com/exclusivesunil/howmuchyaknowabotme), \#111 [Pirateo](https://github.com/leonhano/SeaExplorer), \#100 [FomoNEO](https://github.com/qw1985/FomoNEO), \#55 [Devourer](https://github.com/norchain/NEOGameDevourer), \#46 [CarryBattle](https://github.com/norchain/NEOCarryBattle)
 
-Neunity is going to integrate NEO-Lux RPC to further simplify the development process. 
+Neunity is going to integrate NEO-Lux RPC to further simplify the development process.
 
 
 
@@ -86,7 +86,7 @@ Neunity is going to integrate NEO-Lux RPC to further simplify the development pr
 * In order to realize the "information delay" to simulate Byzantine General Problem, we'll employ the  Asymmentropy algorthim.（[Intro](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%8A%80%E6%9C%AF.md) Chapter 2.2)
 * Carrhae Battle is a blockchain game with full logic on chain. The players can experience the full game without dependency of centralized server (Not even require the client app). The full onchain logic can ensure the digital asset that players own not only be kept forever, but also be usable forever.
 * Carrhae Battle client is developed with Unity, support deployment to iOS, Android, H5 and PC/Mac clients.
-* Since information on blockchain are public, the late-mover advantage could be very strong in many cases. We designed the Information Subsidy ([Intro](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%8A%80%E6%9C%AF.md) Chapter 3.1) to balance it. 
+* Since information on blockchain are public, the late-mover advantage could be very strong in many cases. We designed the Information Subsidy ([Intro](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E6%8A%80%E6%9C%AF.md) Chapter 3.1) to balance it.
 * Soft Server ([Intro](https://github.com/norchain/NEOCarryBattle/blob/master/%E5%8D%A1%E8%8E%B1%E6%88%98%E7%BA%AA-%E5%88%86%E6%9C%8D.md)) is designed specifically for blockchain games to reduce the invoking cost when number of players and assets increases.
 
 
