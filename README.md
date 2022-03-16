@@ -2,7 +2,7 @@
 
 
 
-**Carray Battle** won the "Technical Effects Award" in NEO's 1st Blockchain Game Development Competition.
+**Carry Battle** won the "Technical Effects Award" in NEO's 1st Blockchain Game Development Competition.
 
 
 
